@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elmah.Io</name>
+    </assembly>
+    <members>
+        <member name="T:Elmah.Io.ErrorLog">
+            <summary>
+            <see cref="T:Elmah.Io.ErrorLog"/>
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.ErrorLog.Api">
+            <summary>
+            The IElmahioAPI from the Elmah.Io.Client package that is used internally in this error log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.ErrorLog.Client">
+            <summary>
+            The IMessagesClient from the Elmah.Io.Client package that is used internally in this error log.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.#ctor(Elmah.Io.Client.IElmahioAPI,System.Guid)">
+            <summary>
+            ELMAH doesn't use this constructor and it is only published in order for you to create
+            a new error logger using a custom implementation of ILogger or an instance of Logger that
+            you've already created. If you implement your own ILogger, please  identify yourself
+            using an appropriate user agent.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.#ctor(System.Collections.IDictionary)">
+            <summary>
+            The constructor used by ELMAH. ELMAH provides key/value pairs in the config dictionary,
+            as specified in attributes in the ELMAH XML configuration (web.config).
+            This constructor intentionally handles the internal ILogger instance as singleton.
+            ELMAH calls this constructor one time per error logged and to only create the logger
+            once, letting you listen for events on the logger etc., the logger needs to be
+            singleton.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.Log(Elmah.Error)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.Log(Elmah.Error)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.BeginLog(Elmah.Error,System.AsyncCallback,System.Object)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.BeginLog(Elmah.Error,System.AsyncCallback,System.Object)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.EndLog(System.IAsyncResult)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.EndLog(System.IAsyncResult)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.BeginGetError(System.String,System.AsyncCallback,System.Object)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.BeginGetError(System.String,System.AsyncCallback,System.Object)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.EndGetError(System.IAsyncResult)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.EndGetError(System.IAsyncResult)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.GetError(System.String)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.GetError(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.BeginGetErrors(System.Int32,System.Int32,System.Collections.IList,System.AsyncCallback,System.Object)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.BeginGetErrors(System.Int32,System.Int32,System.Collections.IList,System.AsyncCallback,System.Object)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.EndGetErrors(System.IAsyncResult)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.EndGetErrors(System.IAsyncResult)"/>
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.ErrorLog.GetErrors(System.Int32,System.Int32,System.Collections.IList)">
+            <summary>
+            <see cref="M:Elmah.Io.IErrorLog.GetErrors(System.Int32,System.Int32,System.Collections.IList)"/>
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.IErrorLog">
+            <summary>
+            ELMAH ErrorLog implementation that logs error to elmah.io.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.Log(Elmah.Error)">
+            <summary>
+            Log an error to elmah.io.
+            </summary>
+            <returns>The assigned elmah.io ID for the created error.</returns>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.BeginLog(Elmah.Error,System.AsyncCallback,System.Object)">
+            <summary>
+            Asynchronous version of the Log method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.EndLog(System.IAsyncResult)">
+            <summary>
+            Asynchronous version of the Log method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.GetError(System.String)">
+            <summary>
+            Return an error in elmah.io from its ID.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.BeginGetError(System.String,System.AsyncCallback,System.Object)">
+            <summary>
+            Asynchronous version of the GetError method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.EndGetError(System.IAsyncResult)">
+            <summary>
+            Asynchronous version of the GetError method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.GetErrors(System.Int32,System.Int32,System.Collections.IList)">
+            <summary>
+            Get a list of errors in elmah.io.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.BeginGetErrors(System.Int32,System.Int32,System.Collections.IList,System.AsyncCallback,System.Object)">
+            <summary>
+            Asynchronous version of the GetErrors method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.IErrorLog.EndGetErrors(System.IAsyncResult)">
+            <summary>
+            Asynchronous version of the GetErrors method.
+            </summary>
+        </member>
+    </members>
+</doc>

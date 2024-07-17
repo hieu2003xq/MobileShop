@@ -1,0 +1,267 @@
+﻿
+
+@{
+    ViewBag.Title = "hienThiDonDaGiao";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container-full">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="page-title">Đơn hàng đã giao</h3>
+                <div class="d-inline-block align-items-center">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                            <li class="breadcrumb-item" aria-current="page">e-Commerce</li>
+                            <li class="breadcrumb-item active" aria-current="page">Đơn hàng đã giao</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table id="tb1" class="table table-hover no-wrap product-order" data-page-size="10">
+                                <thead>
+                                    <tr>
+                                        <th>STT </th>
+                                        <th>Mã Đơn </th>
+                                        <th>Hình Ảnh </th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Số Lượng </th>
+                                        <th>Ngày Đặt</th>
+                                        <th>Đơn giá</th>
+                                        <th>Giảm Giá</th>
+                                        <th>Tiền Trả</th>
+                                        <th>Trạng Thái TT</th>
+                                        <th>Trạng Thái GH</th>
+                                        <th>Chức Năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal center-modal fade" id="modal-center" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xóa sản Phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="ma1" />
+                        <p>Bạn có muốn xóa Đơn hàng này không ?</p>
+                    </div>
+                    <div class="modal-footer modal-footer-uniform">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không </button>
+                        <button type="button" class="btn btn-primary float-right" data-dismiss="modal" id="xoa1">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- /.content -->
+</div>
+@section css{
+    <link href="~/assets/vendor_components/datatable/datatables.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+}
+@section script{
+    <script src="~/assets/vendor_components/datatable/datatables.min.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            load();
+            $('body').on('click', '.btndelete', function () {
+                var maDon = $(this).data('id');
+                $('#ma1').val(maDon);
+            })
+            $("#xoa1").on("click", function () {
+                var maDon = $('#ma1').val();
+                $.ajax({
+                    url: "/sanPham/xoaDon",
+                    type: "POST",
+                    data: { maDon: maDon },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: ' Xóa Đơn hàng  ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 6,
+                                afterShown: function () { load(); },
+                            });
+                            $('#modal-center').modal('hide');
+                        }
+
+                    }
+                })
+            })
+        })
+        function load() {
+            if ($.fn.DataTable.isDataTable('#tb1')) {
+                $('#tb1').DataTable().destroy();
+
+            }
+            $('#tb1').DataTable({
+                "processing": "true",
+                "serverSide": "true",
+
+                'lengthChange': true,
+
+                'ordering': true,
+                'info': true,
+                'autoWidth': false,
+                "paging": "false",
+                "searching": "false",
+                "ajax": {
+                    "url": "/QLdonHang/donDaGiao",
+                    "type": "POST",
+                    "datatype": "json",
+                },
+                "columns": [
+                    {
+                        "data": "tenKH",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.STT + "</td>"
+                        }
+                    },
+                    {
+                        "data": "maDon",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.maDon + "</td>"
+                        }
+                    },
+                    {
+                        "data": "hinhAnh",
+                        "render": function (data, type, row, meta) {
+                            return " <td><img src='/images/product/" + row.hinhAnh + "' width='80'></td>"
+                        }
+                    },
+                    {
+                        "data": "tenSP",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.tenSP + "</td>"
+                        }
+                    },
+
+                    {
+                        "data": "soLuong",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.soLuong + "</td>"
+                        }
+
+                    },
+                    {
+                        "data": "ngayDat",
+                        "render": function (data, type, row, meta) {
+                            var date = moment(row.ngayDat).format(' DD/MM/YYYY HH:mm:ss');;
+                            return "<td>" + date + "</td>"
+                        }
+
+                    },
+                    {
+                        "data": "giaBan",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.giaBan.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</td>"
+                        }
+
+                    },
+                    {
+                        "data": "giamGia",
+                        "render": function (data, type, row, meta) {
+                            if (row.giamGia != "0%") {
+                                return "<td><span style='color:red'>-" + row.giamGia + "</span></td>"
+                            } else {
+                                return "<td>" + row.giamGia + "</td>"
+                            }
+                        }
+
+                    },
+                    {
+                        "data": "tienTra",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.tienTra.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</td>"
+                        }
+
+                    },
+                    {
+                        "data": "tinhTrangTT",
+                        "render": function (data, type, row, meta) {
+                            if (row.tinhTrangTT == "Trả Sau") {
+                                return " <td><span class='badge badge-pill badge-warning'>" + row.tinhTrangTT + "</span></td>"
+
+                            }
+                            else {
+                                return " <td><span class='badge badge-pill badge-success'>" + row.tinhTrangTT + "</span></td>"
+                            }
+                        }
+
+                    },
+                    {
+                        "data": "tinhTrangGH",
+                        "render": function (data, type, row, meta) {
+                            if (row.tinhTrangGH == "Đang giao") {
+                                return " <td><span class='badge badge-pill badge-warning' ><a href='#' style='color:white' class='donDangGiao'>" + row.tinhTrangGH + "</a></span></td>"
+                            }
+                            else {
+                                return "<td><span class='badge badge-pill badge-success'><a href='#' style='color:white' class='donDaGiao'>" + row.tinhTrangGH + "</a></span></td>"
+                            }
+                        }
+
+                    },
+                    {
+                        "data": "null",
+                        "render": function (data, type, row, meta) {
+
+                            return "<td><a href='#' class='text-danger btndelete' data-id='" + row.maDon + "' data-toggle='modal' data-target='#modal-center'><i class='ti-trash'></i></a></td>";
+
+
+                        }
+                    }
+
+                ],
+                "language": {
+                    "emptyTable": "không có dữ liệu",
+                    "sLengthMenu": "Số Bản ghi hiển thị trên 1 trang _MENU_",
+                    "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
+                    "sSearch": "Tìm kiếm",
+                    "oPaginate": {
+                        "sFirst": "Đầu",
+                        "sPrevious": "Trước",
+                        "sNext": "Tiếp",
+                        "sLast": "Cuối",
+                    },
+                    "bAutoWidth": "false",
+                }
+
+            });
+        }
+    </script>
+}
+
+
+

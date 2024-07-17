@@ -1,0 +1,10 @@
+2024-06-12 15:07:33.182 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-06-12 15:37:10.061 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-06-12 18:14:15.919 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-06-12 18:14:18.446 +07:00 [Information] 
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/detail","Dữ liệu được lấy từ:":""}
+2024-06-12 23:04:31.789 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}

@@ -1,0 +1,2229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elmah.Io.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Elmah.Io.Client.Breadcrumb">
+            <summary>
+            A breadcrumb represent a step preceding a log message.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.Breadcrumb.#ctor(System.Nullable{System.DateTimeOffset},System.String,System.String,System.String)">
+            <summary>
+            Create a new breadcrumb.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Breadcrumb.DateTime">
+            <summary>
+            The date and time in UTC of the breadcrumb. If no date and time is provided, we will use the current date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Breadcrumb.Severity">
+            <summary>
+            An enum value representing the severity of this breadcrumb. The following values are allowed: Verbose, Debug, Information, Warning, Error, Fatal.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Breadcrumb.Action">
+            <summary>
+            An action representing the breadcrumb. You can set a custom action or use one of the built-in: click, submit, navigation, request, error.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Breadcrumb.Message">
+            <summary>
+            A message representing the breadcrumb. This should elaborate on the action.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.DeploymentsClient">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.GetAll">
+            <summary>
+            Fetch a list of deployments.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <returns>Request for deployments successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.GetAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a list of deployments.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <returns>Request for deployments successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.Create(Elmah.Io.Client.CreateDeployment)">
+            <summary>
+            Create a new deployment.
+            </summary>
+            <remarks>
+            Required permission: `deployments_write`
+            </remarks>
+            <param name="body">The deployment object to create.</param>
+            <returns>Deployment was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.CreateAsync(Elmah.Io.Client.CreateDeployment,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new deployment.
+            </summary>
+            <remarks>
+            Required permission: `deployments_write`
+            </remarks>
+            <param name="body">The deployment object to create.</param>
+            <returns>Deployment was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.Get(System.String)">
+            <summary>
+            Fetch a deployment by its ID.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <param name="id">The ID of the deployment to fetch.</param>
+            <returns>Request for deployment successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.GetAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a deployment by its ID.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <param name="id">The ID of the deployment to fetch.</param>
+            <returns>Request for deployment successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.Delete(System.String)">
+            <summary>
+            Delete a deployment by its ID.
+            </summary>
+            <remarks>
+            This endpoint doesn't clear the version number of messages already annotated with this deployment version.&lt;br/&gt;&lt;br/&gt;Required permission: `deployments_delete`
+            </remarks>
+            <param name="id">The ID of the deployment to delete.</param>
+            <returns>Deployment was deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.DeploymentsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Delete a deployment by its ID.
+            </summary>
+            <remarks>
+            This endpoint doesn't clear the version number of messages already annotated with this deployment version.&lt;br/&gt;&lt;br/&gt;Required permission: `deployments_delete`
+            </remarks>
+            <param name="id">The ID of the deployment to delete.</param>
+            <returns>Deployment was deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Elmah.Io.Client.ElmahioAPI">
+            <inheritdoc/>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.Deployments">
+            <inheritdoc/>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.Heartbeats">
+            <inheritdoc/>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.Logs">
+            <inheritdoc/> d sa
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.Messages">
+            <inheritdoc/>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.UptimeChecks">
+            <inheritdoc/>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.SourceMaps">
+            <inheritdoc/>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahioAPI.Options">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.ElmahioAPI.#ctor(System.String,Elmah.Io.Client.ElmahIoOptions,System.Net.Http.HttpClient)">
+            <summary>
+            Create a new instance with the specified HttpClient.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ElmahioAPI.Create(System.String,Elmah.Io.Client.ElmahIoOptions,System.Net.Http.HttpClient)">
+            <summary>
+            Create a new instance of the client using the provided HttpClient. The provided HttpClient will be updated
+            with the API key header, a user agent, and the base URL for the elmah.io API (if not already set).
+            The instance should be shared or kept as a singleton. When bringing your own HttpClient the proxy
+            and timeout settings on the ElmahIoOptions object will be ignored. The HttpClient should be configured to
+            use the proxy manually before provided to this method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ElmahioAPI.Create(System.String,Elmah.Io.Client.ElmahIoOptions)">
+            <summary>
+            Create a new instance of the client. The instance should be shared or kept as a singleton.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ElmahioAPI.Create(System.String)">
+            <summary>
+            Create a new instance of the client with default options. The instance should be shared or kept as a singleton.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.GetAll">
+            <summary>
+            Fetch a list of deployments.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <returns>Request for deployments successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.GetAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a list of deployments.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <returns>Request for deployments successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.Create(Elmah.Io.Client.CreateDeployment)">
+            <summary>
+            Create a new deployment.
+            </summary>
+            <remarks>
+            Required permission: `deployments_write`
+            </remarks>
+            <param name="body">The deployment object to create.</param>
+            <returns>Deployment was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.CreateAsync(Elmah.Io.Client.CreateDeployment,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new deployment.
+            </summary>
+            <remarks>
+            Required permission: `deployments_write`
+            </remarks>
+            <param name="body">The deployment object to create.</param>
+            <returns>Deployment was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.Get(System.String)">
+            <summary>
+            Fetch a deployment by its ID.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <param name="id">The ID of the deployment to fetch.</param>
+            <returns>Request for deployment successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.GetAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a deployment by its ID.
+            </summary>
+            <remarks>
+            Required permission: `deployments_read`
+            </remarks>
+            <param name="id">The ID of the deployment to fetch.</param>
+            <returns>Request for deployment successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.Delete(System.String)">
+            <summary>
+            Delete a deployment by its ID.
+            </summary>
+            <remarks>
+            This endpoint doesn't clear the version number of messages already annotated with this deployment version.&lt;br/&gt;&lt;br/&gt;Required permission: `deployments_delete`
+            </remarks>
+            <param name="id">The ID of the deployment to delete.</param>
+            <returns>Deployment was deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IDeploymentsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Delete a deployment by its ID.
+            </summary>
+            <remarks>
+            This endpoint doesn't clear the version number of messages already annotated with this deployment version.&lt;br/&gt;&lt;br/&gt;Required permission: `deployments_delete`
+            </remarks>
+            <param name="id">The ID of the deployment to delete.</param>
+            <returns>Deployment was deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Elmah.Io.Client.IHeartbeatsClient">
+            <summary>
+            Interface for methods creating heartbeats.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.Create(System.String,System.String,Elmah.Io.Client.CreateHeartbeat)">
+            <summary>
+            Create a new heartbeat.
+            </summary>
+            <remarks>
+            Required permission: `heartbeats_write`
+            </remarks>
+            <param name="id">The ID of the heartbeat check.</param>
+            <param name="logId">The ID of the log containing the heartbeat check.</param>
+            <param name="body">The details of the heartbeat.</param>
+            <returns>Heartbeat was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.CreateAsync(System.String,System.String,Elmah.Io.Client.CreateHeartbeat,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new heartbeat.
+            </summary>
+            <remarks>
+            Required permission: `heartbeats_write`
+            </remarks>
+            <param name="id">The ID of the heartbeat check.</param>
+            <param name="logId">The ID of the log containing the heartbeat check.</param>
+            <param name="body">The details of the heartbeat.</param>
+            <returns>Heartbeat was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.Check(System.Func{System.Boolean},System.Guid,System.String,System.String,System.String)">
+            <summary>
+            Helper for running a piece of code and automatically logging a heartbeat. If the code return true, a healthy heartbeat is logged.
+            If the code return false or throw an exception, an unhealthy heartbeat is logged.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.CheckAsync(System.Func{System.Threading.Tasks.Task{System.Boolean}},System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Helper for running a piece of code and automatically logging a heartbeat. If the code return true, a healthy heartbeat is logged.
+            If the code return false or throw an exception, an unhealthy heartbeat is logged.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.Healthy(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64})">
+            <summary>
+            Logs a healthy heartbeat in the specified log on the specified heartbeat.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.HealthyAsync(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>
+            Logs a healthy heartbeat in the specified log on the specified heartbeat.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.Degraded(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64})">
+            <summary>
+            Logs a degraded heartbeat in the specified log on the specified heartbeat.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.DegradedAsync(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>
+            Logs a degraded heartbeat in the specified log on the specified heartbeat.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.Unhealthy(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64})">
+            <summary>
+            Logs a unhealthy heartbeat in the specified log on the specified heartbeat.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IHeartbeatsClient.UnhealthyAsync(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>
+            Logs a unhealthy heartbeat in the specified log on the specified heartbeat.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.HeartbeatsClient">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.Create(System.String,System.String,Elmah.Io.Client.CreateHeartbeat)">
+            <summary>
+            Create a new heartbeat.
+            </summary>
+            <remarks>
+            Required permission: `heartbeats_write`
+            </remarks>
+            <param name="id">The ID of the heartbeat check.</param>
+            <param name="logId">The ID of the log containing the heartbeat check.</param>
+            <param name="body">The details of the heartbeat.</param>
+            <returns>Heartbeat was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.CreateAsync(System.String,System.String,Elmah.Io.Client.CreateHeartbeat,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new heartbeat.
+            </summary>
+            <remarks>
+            Required permission: `heartbeats_write`
+            </remarks>
+            <param name="id">The ID of the heartbeat check.</param>
+            <param name="logId">The ID of the log containing the heartbeat check.</param>
+            <param name="body">The details of the heartbeat.</param>
+            <returns>Heartbeat was created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.Check(System.Func{System.Boolean},System.Guid,System.String,System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.CheckAsync(System.Func{System.Threading.Tasks.Task{System.Boolean}},System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.Healthy(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.HealthyAsync(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.Degraded(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.DegradedAsync(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.Unhealthy(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.HeartbeatsClient.UnhealthyAsync(System.Guid,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.GetAll">
+            <summary>
+            Fetch a list of logs.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <returns>Request for logs successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.GetAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a list of logs.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <returns>Request for logs successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.Create(Elmah.Io.Client.CreateLog)">
+            <summary>
+            Create a new log.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="body">The log object to create.</param>
+            <returns>Log where successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.CreateAsync(Elmah.Io.Client.CreateLog,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new log.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="body">The log object to create.</param>
+            <returns>Log where successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.Get(System.String)">
+            <summary>
+            Fetch a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <param name="id">The ID of the log to fetch.</param>
+            <returns>Request for log successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.GetAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <param name="id">The ID of the log to fetch.</param>
+            <returns>Request for log successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.Disable(System.String)">
+            <summary>
+            Disable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to disable.</param>
+            <returns>Log was disabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.DisableAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Disable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to disable.</param>
+            <returns>Log was disabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.Enable(System.String)">
+            <summary>
+            Enable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to enable.</param>
+            <returns>Log was enabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.EnableAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Enable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to enable.</param>
+            <returns>Log was enabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.Diagnose(System.String)">
+            <summary>
+            Help diagnose logging problems.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the log to diagnose.</param>
+            <returns>Log was diagnosed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ILogsClient.DiagnoseAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Help diagnose logging problems.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the log to diagnose.</param>
+            <returns>Log was diagnosed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Elmah.Io.Client.LogsClient">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.GetAll">
+            <summary>
+            Fetch a list of logs.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <returns>Request for logs successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.GetAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a list of logs.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <returns>Request for logs successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.Create(Elmah.Io.Client.CreateLog)">
+            <summary>
+            Create a new log.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="body">The log object to create.</param>
+            <returns>Log where successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.CreateAsync(Elmah.Io.Client.CreateLog,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new log.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="body">The log object to create.</param>
+            <returns>Log where successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.Get(System.String)">
+            <summary>
+            Fetch a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <param name="id">The ID of the log to fetch.</param>
+            <returns>Request for log successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.GetAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_read`
+            </remarks>
+            <param name="id">The ID of the log to fetch.</param>
+            <returns>Request for log successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.Disable(System.String)">
+            <summary>
+            Disable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to disable.</param>
+            <returns>Log was disabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.DisableAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Disable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to disable.</param>
+            <returns>Log was disabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.Enable(System.String)">
+            <summary>
+            Enable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to enable.</param>
+            <returns>Log was enabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.EnableAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Enable a log by its ID.
+            </summary>
+            <remarks>
+            Required permission: `logs_write`
+            </remarks>
+            <param name="id">The ID of the log to enable.</param>
+            <returns>Log was enabled.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.Diagnose(System.String)">
+            <summary>
+            Help diagnose logging problems.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the log to diagnose.</param>
+            <returns>Log was diagnosed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.LogsClient.DiagnoseAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Help diagnose logging problems.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the log to diagnose.</param>
+            <returns>Log was diagnosed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Elmah.Io.Client.IMessagesClient">
+            <summary>
+            Interface for methods creating log messages.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.GetAll(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Boolean})">
+            <summary>
+            Fetch messages from a log.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="pageIndex">The page number of the result.</param>
+            <param name="pageSize">The number of messages to load (max 100) or 15 if not set.</param>
+            <param name="query">A full-text or Lucene query to limit the messages by.</param>
+            <param name="from">A start date and time to search from (not included).</param>
+            <param name="to">An end date and time to search to (not included).</param>
+            <param name="includeHeaders">Include headers like server variables and cookies in the result (slower).</param>
+            <returns>Log found and may contain messages.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.GetAllAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch messages from a log.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="pageIndex">The page number of the result.</param>
+            <param name="pageSize">The number of messages to load (max 100) or 15 if not set.</param>
+            <param name="query">A full-text or Lucene query to limit the messages by.</param>
+            <param name="from">A start date and time to search from (not included).</param>
+            <param name="to">An end date and time to search to (not included).</param>
+            <param name="includeHeaders">Include headers like server variables and cookies in the result (slower).</param>
+            <returns>Log found and may contain messages.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.DeleteAll(System.String,Elmah.Io.Client.Search)">
+            <summary>
+            Deletes a list of messages by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.DeleteAllAsync(System.String,Elmah.Io.Client.Search,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Deletes a list of messages by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Create(System.String,Elmah.Io.Client.CreateMessage)">
+            <summary>
+            Create a new message.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new message.</param>
+            <param name="body">The message object to create.</param>
+            <returns>Message was not created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateAsync(System.String,Elmah.Io.Client.CreateMessage,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new message.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new message.</param>
+            <param name="body">The message object to create.</param>
+            <returns>Message was not created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Get(System.String,System.String)">
+            <summary>
+            Fetch a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="id">The ID of the message to fetch.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message found.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.GetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="id">The ID of the message to fetch.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message found.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Delete(System.String,System.String)">
+            <summary>
+            Delete a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="id">The ID of the message to delete.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.DeleteAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Delete a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="id">The ID of the message to delete.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.FixAll(System.String,Elmah.Io.Client.Search)">
+            <summary>
+            Mark a list of messages as fixed by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where marked as fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.FixAllAsync(System.String,Elmah.Io.Client.Search,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Mark a list of messages as fixed by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where marked as fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Hide(System.String,System.String)">
+            <summary>
+            Hide a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to hide.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message was hidden.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.HideAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Hide a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to hide.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message was hidden.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Fix(System.String,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Fix a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to fix.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="markAllAsFixed">If set to true, all instances of the log message are set to fixed.</param>
+            <returns>Message was fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.FixAsync(System.String,System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fix a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to fix.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="markAllAsFixed">If set to true, all instances of the log message are set to fixed.</param>
+            <returns>Message was fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateBulk(System.String,System.Collections.Generic.IEnumerable{Elmah.Io.Client.CreateMessage})">
+            <summary>
+            Create one or more new messages.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new messages.</param>
+            <param name="body">The messages to create.</param>
+            <returns>Zero or more messages where successfully created. Check the response body for details.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateBulkAsync(System.String,System.Collections.Generic.IEnumerable{Elmah.Io.Client.CreateMessage},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create one or more new messages.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new messages.</param>
+            <param name="body">The messages to create.</param>
+            <returns>Zero or more messages where successfully created. Check the response body for details.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="E:Elmah.Io.Client.IMessagesClient.OnMessage">
+            <summary>
+            By subscribing to the OnMessage event, you can hook into the pipeline of logging a message to elmah.io.
+            The event is triggered just before calling elmah.io's API.
+            </summary>
+        </member>
+        <member name="E:Elmah.Io.Client.IMessagesClient.OnMessageFail">
+            <summary>
+            By subscribing to the OnMessageFail event, you can get a call if an error happened while logging a message
+            to elmah.io. In this case you should do something to log the message elsewhere.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Verbose(System.Guid,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Verbose severity.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Verbose(System.Guid,System.Exception,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Verbose severity and associated exception.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Debug(System.Guid,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Debug severity.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Debug(System.Guid,System.Exception,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Debug severity and associated exception.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Information(System.Guid,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Information severity.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Information(System.Guid,System.Exception,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Information severity and associated exception.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Warning(System.Guid,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Warning severity.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Warning(System.Guid,System.Exception,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Warning severity and associated exception.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Error(System.Guid,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Error severity.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Error(System.Guid,System.Exception,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Error severity and associated exception.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Fatal(System.Guid,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Fatal severity.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Fatal(System.Guid,System.Exception,System.String,System.Object[])">
+            <summary>
+            Write a log message with the Verbose Fatal and associated exception.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.Log(System.Guid,System.Exception,Elmah.Io.Client.Severity,System.String,System.Object[])">
+            <summary>
+            Write a log message with the specified exception, severity and message.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateBulkAndNotify(System.Guid,System.Collections.Generic.IList{Elmah.Io.Client.CreateMessage})">
+            <summary>
+            Low level log method, which all other methods wanting to log a log message should ideally call.
+            The CreateBulkAndNotify method triggers event handlers of the OnMessage and OnMessageFail events.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateBulkAndNotifyAsync(System.Guid,System.Collections.Generic.IList{Elmah.Io.Client.CreateMessage},System.Threading.CancellationToken)">
+            <summary>
+            Low level log method, which all other methods wanting to log a log message should ideally call.
+            The CreateBulkAndNotifyAsync method triggers event handlers of the OnMessage and OnMessageFail events.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateAndNotify(System.Guid,Elmah.Io.Client.CreateMessage)">
+            <summary>
+            Low level log method, which all other methods wanting to log a log message should ideally call.
+            The CreateAndNotify method triggers event handlers of the OnMessage and OnMessageFail events.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.IMessagesClient.CreateAndNotifyAsync(System.Guid,Elmah.Io.Client.CreateMessage,System.Threading.CancellationToken)">
+            <summary>
+            Low level log method, which all other methods wanting to log a log message should ideally call.
+            The CreateAndNotifyAsync method triggers event handlers of the OnMessage and OnMessageFail events.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.MessagesClient">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.GetAll(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Boolean})">
+            <summary>
+            Fetch messages from a log.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="pageIndex">The page number of the result.</param>
+            <param name="pageSize">The number of messages to load (max 100) or 15 if not set.</param>
+            <param name="query">A full-text or Lucene query to limit the messages by.</param>
+            <param name="from">A start date and time to search from (not included).</param>
+            <param name="to">An end date and time to search to (not included).</param>
+            <param name="includeHeaders">Include headers like server variables and cookies in the result (slower).</param>
+            <returns>Log found and may contain messages.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.GetAllAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch messages from a log.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="pageIndex">The page number of the result.</param>
+            <param name="pageSize">The number of messages to load (max 100) or 15 if not set.</param>
+            <param name="query">A full-text or Lucene query to limit the messages by.</param>
+            <param name="from">A start date and time to search from (not included).</param>
+            <param name="to">An end date and time to search to (not included).</param>
+            <param name="includeHeaders">Include headers like server variables and cookies in the result (slower).</param>
+            <returns>Log found and may contain messages.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.DeleteAll(System.String,Elmah.Io.Client.Search)">
+            <summary>
+            Deletes a list of messages by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.DeleteAllAsync(System.String,Elmah.Io.Client.Search,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Deletes a list of messages by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Create(System.String,Elmah.Io.Client.CreateMessage)">
+            <summary>
+            Create a new message.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new message.</param>
+            <param name="body">The message object to create.</param>
+            <returns>Message was not created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateAsync(System.String,Elmah.Io.Client.CreateMessage,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create a new message.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new message.</param>
+            <param name="body">The message object to create.</param>
+            <returns>Message was not created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Get(System.String,System.String)">
+            <summary>
+            Fetch a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="id">The ID of the message to fetch.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message found.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.GetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_read`
+            </remarks>
+            <param name="id">The ID of the message to fetch.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message found.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Delete(System.String,System.String)">
+            <summary>
+            Delete a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="id">The ID of the message to delete.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.DeleteAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Delete a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_delete`
+            </remarks>
+            <param name="id">The ID of the message to delete.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message where deleted.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.FixAll(System.String,Elmah.Io.Client.Search)">
+            <summary>
+            Mark a list of messages as fixed by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where marked as fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.FixAllAsync(System.String,Elmah.Io.Client.Search,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Mark a list of messages as fixed by logid and query.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log containing the messages.</param>
+            <param name="body">A search object containing query, time filters etc.</param>
+            <returns>Messages where marked as fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Hide(System.String,System.String)">
+            <summary>
+            Hide a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to hide.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message was hidden.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.HideAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Hide a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to hide.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <returns>Message was hidden.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Fix(System.String,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Fix a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to fix.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="markAllAsFixed">If set to true, all instances of the log message are set to fixed.</param>
+            <returns>Message was fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.FixAsync(System.String,System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fix a message by its ID.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="id">The ID of the message to fix.</param>
+            <param name="logId">The ID of the log containing the message.</param>
+            <param name="markAllAsFixed">If set to true, all instances of the log message are set to fixed.</param>
+            <returns>Message was fixed.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateBulk(System.String,System.Collections.Generic.IEnumerable{Elmah.Io.Client.CreateMessage})">
+            <summary>
+            Create one or more new messages.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new messages.</param>
+            <param name="body">The messages to create.</param>
+            <returns>Zero or more messages where successfully created. Check the response body for details.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateBulkAsync(System.String,System.Collections.Generic.IEnumerable{Elmah.Io.Client.CreateMessage},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create one or more new messages.
+            </summary>
+            <remarks>
+            Required permission: `messages_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the new messages.</param>
+            <param name="body">The messages to create.</param>
+            <returns>Zero or more messages where successfully created. Check the response body for details.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.#ctor(System.String,System.Net.Http.HttpClient,Elmah.Io.Client.ElmahIoOptions)">
+            <summary>
+            Create a new instances of the MessagesClient class using the provider options.
+            This should typically not be called by any client. Use the ElmahioAPI.Create method instead.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessagesClient.Options">
+            <summary>
+            The options used to log messages to elmah.io.
+            This should typically not be called by any client. Use the ElmahioAPI.Create method instead.
+            </summary>
+        </member>
+        <member name="E:Elmah.Io.Client.MessagesClient.OnMessage">
+            <inheritdoc/>
+        </member>
+        <member name="E:Elmah.Io.Client.MessagesClient.OnMessageFail">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Verbose(System.Guid,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Verbose(System.Guid,System.Exception,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Debug(System.Guid,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Debug(System.Guid,System.Exception,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Information(System.Guid,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Information(System.Guid,System.Exception,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Warning(System.Guid,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Warning(System.Guid,System.Exception,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Error(System.Guid,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Error(System.Guid,System.Exception,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Fatal(System.Guid,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Fatal(System.Guid,System.Exception,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.Log(System.Guid,System.Exception,Elmah.Io.Client.Severity,System.String,System.Object[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateBulkAndNotify(System.Guid,System.Collections.Generic.IList{Elmah.Io.Client.CreateMessage})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateBulkAndNotifyAsync(System.Guid,System.Collections.Generic.IList{Elmah.Io.Client.CreateMessage},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateAndNotify(System.Guid,Elmah.Io.Client.CreateMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.MessagesClient.CreateAndNotifyAsync(System.Guid,Elmah.Io.Client.CreateMessage,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.ISourceMapsClient.CreateOrUpdate(System.String,System.Uri,Elmah.Io.Client.FileParameter,Elmah.Io.Client.FileParameter)">
+            <summary>
+            Create or update a translation between a minified JavaScript path to the minified JavaScript and source map files.
+            </summary>
+            <remarks>
+            Required permission: `sourcemaps_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the minified JavaScript and source map.</param>
+            <param name="path">An URL to the online minified JavaScript file. The URL can be absolute or relative but will always be converted to a relative path (no protocol, domain, and query parameters).
+            <br/>elmah.io uses this path to lookup any lines in a JS stack trace that will need de-minification.</param>
+            <param name="sourceMap">The source map file. Only files with an extension of .map and content type of application/json will be accepted.</param>
+            <param name="minifiedJavaScript">The minified JavaScript file. Only files with an extension of .js and content type of text/javascript will be accepted.</param>
+            <returns>Source map was successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.ISourceMapsClient.CreateOrUpdateAsync(System.String,System.Uri,Elmah.Io.Client.FileParameter,Elmah.Io.Client.FileParameter,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create or update a translation between a minified JavaScript path to the minified JavaScript and source map files.
+            </summary>
+            <remarks>
+            Required permission: `sourcemaps_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the minified JavaScript and source map.</param>
+            <param name="path">An URL to the online minified JavaScript file. The URL can be absolute or relative but will always be converted to a relative path (no protocol, domain, and query parameters).
+            <br/>elmah.io uses this path to lookup any lines in a JS stack trace that will need de-minification.</param>
+            <param name="sourceMap">The source map file. Only files with an extension of .map and content type of application/json will be accepted.</param>
+            <param name="minifiedJavaScript">The minified JavaScript file. Only files with an extension of .js and content type of text/javascript will be accepted.</param>
+            <returns>Source map was successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.SourceMapsClient.CreateOrUpdate(System.String,System.Uri,Elmah.Io.Client.FileParameter,Elmah.Io.Client.FileParameter)">
+            <summary>
+            Create or update a translation between a minified JavaScript path to the minified JavaScript and source map files.
+            </summary>
+            <remarks>
+            Required permission: `sourcemaps_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the minified JavaScript and source map.</param>
+            <param name="path">An URL to the online minified JavaScript file. The URL can be absolute or relative but will always be converted to a relative path (no protocol, domain, and query parameters).
+            <br/>elmah.io uses this path to lookup any lines in a JS stack trace that will need de-minification.</param>
+            <param name="sourceMap">The source map file. Only files with an extension of .map and content type of application/json will be accepted.</param>
+            <param name="minifiedJavaScript">The minified JavaScript file. Only files with an extension of .js and content type of text/javascript will be accepted.</param>
+            <returns>Source map was successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.SourceMapsClient.CreateOrUpdateAsync(System.String,System.Uri,Elmah.Io.Client.FileParameter,Elmah.Io.Client.FileParameter,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Create or update a translation between a minified JavaScript path to the minified JavaScript and source map files.
+            </summary>
+            <remarks>
+            Required permission: `sourcemaps_write`
+            </remarks>
+            <param name="logId">The ID of the log which should contain the minified JavaScript and source map.</param>
+            <param name="path">An URL to the online minified JavaScript file. The URL can be absolute or relative but will always be converted to a relative path (no protocol, domain, and query parameters).
+            <br/>elmah.io uses this path to lookup any lines in a JS stack trace that will need de-minification.</param>
+            <param name="sourceMap">The source map file. Only files with an extension of .map and content type of application/json will be accepted.</param>
+            <param name="minifiedJavaScript">The minified JavaScript file. Only files with an extension of .js and content type of text/javascript will be accepted.</param>
+            <returns>Source map was successfully created.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IUptimeChecksClient.GetAll">
+            <summary>
+            Fetch a list of uptime checks. Currently in closed beta. Get in contact to get access to this endpoint.
+            </summary>
+            <remarks>
+            Required permission: `uptimechecks_read`
+            </remarks>
+            <returns>Request for uptime checks successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.IUptimeChecksClient.GetAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a list of uptime checks. Currently in closed beta. Get in contact to get access to this endpoint.
+            </summary>
+            <remarks>
+            Required permission: `uptimechecks_read`
+            </remarks>
+            <returns>Request for uptime checks successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Elmah.Io.Client.UptimeChecksClient">
+            <inheritdoc/>
+        </member>
+        <member name="M:Elmah.Io.Client.UptimeChecksClient.GetAll">
+            <summary>
+            Fetch a list of uptime checks. Currently in closed beta. Get in contact to get access to this endpoint.
+            </summary>
+            <remarks>
+            Required permission: `uptimechecks_read`
+            </remarks>
+            <returns>Request for uptime checks successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Elmah.Io.Client.UptimeChecksClient.GetAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>
+            Fetch a list of uptime checks. Currently in closed beta. Get in contact to get access to this endpoint.
+            </summary>
+            <remarks>
+            Required permission: `uptimechecks_read`
+            </remarks>
+            <returns>Request for uptime checks successful.</returns>
+            <exception cref="T:Elmah.Io.Client.ElmahIoClientException">A server side error occurred.</exception>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateBulkMessageResult.StatusCode">
+            <summary>
+            Status code of the individual messages as if it were being created through the non-bulk endpoint.
+            <br/>If a message was succesfully created, the status code will be 201 and location will contain an URL.
+            <br/>If a message was ignored, the status code will be 200 and the location will be empty.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateBulkMessageResult.Location">
+            <summary>
+            The location of the created message if StatusCode equals Created.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeployment.Version">
+            <summary>
+            The version number of this deployment. The value of version can be a SemVer compliant string or any other
+            <br/>syntax that you are using as your version numbering scheme.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeployment.Created">
+            <summary>
+            When was this deployment created in UTC. Defaults to current time if not specified.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeployment.Description">
+            <summary>
+            Optional description of this deployment. Can be markdown or clear text.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeployment.UserName">
+            <summary>
+            The name of the person responsible for creating this deployment. This can be the name taken from
+            <br/>your deployment server (like Azure DevOps or Octopus).
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeployment.UserEmail">
+            <summary>
+            The email of the person responsible for creating this deployment. This can be the email taken from
+            <br/>your deployment server (like Azure DevOps or Octopus).
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeployment.LogId">
+            <summary>
+            As default, deployments are attached all logs of the organization. If you want a deployment to
+            <br/>attach to a single log only, set this to the ID of that log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateDeploymentResult.Location">
+            <summary>
+            The location of the created deployment.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateHeartbeat.Result">
+            <summary>
+            The result of this heartbeat. Can be "Healthy, "Degraded", or "Unhealthy". Defaults to "Healthy"
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateHeartbeat.Reason">
+            <summary>
+            If result is "Degraded" or "Unhealthy" you can use this property to specify why.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateHeartbeat.Application">
+            <summary>
+            Optional string to identify which application logged this message. You can use this if you have multiple applications and services logging to the same log.
+            <br/>If not set, the application name "Heartbeats" will be set on all log messages generated from this heartbeat.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateHeartbeat.Version">
+            <summary>
+            Optional string to identify which version of your application logged this message. If not specified, any errors, warnings, or information messages will get
+            <br/>the newest version number created through deployment tracking as with normal log messages.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateHeartbeat.Took">
+            <summary>
+            Optional long for specifying how many milliseconds it took to execute the task resulting in this heartbeat. This can be used to get a better overview
+            <br/>of how long a scheduled task or service is running or to figure out if the grace period should be increased.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateLog.Name">
+            <summary>
+            Name of the new log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateLogResult.Location">
+            <summary>
+            The location of the created log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Application">
+            <summary>
+            Used to identify which application logged this message. You can use this if you have multiple applications and services logging to the same log
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Detail">
+            <summary>
+            A longer description of the message. For errors this could be a stacktrace, but it's really up to you what to log in there.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Hostname">
+            <summary>
+            The hostname of the server logging the message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Title">
+            <summary>
+            The textual title or headline of the message to log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.TitleTemplate">
+            <summary>
+            The title template of the message to log. This property can be used from logging frameworks that supports
+            <br/>structured logging like: "{user} says {quote}". In the example, titleTemplate will be this string and title
+            <br/>will be "Gilfoyle says It's not magic. It's talent and sweat".
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Source">
+            <summary>
+            The source of the code logging the message. This could be the assembly name.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.StatusCode">
+            <summary>
+            If the message logged relates to a HTTP status code, you can put the code in this property. This would probably only be relevant for errors,
+            <br/>but could be used for logging successful status codes as well.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.DateTime">
+            <summary>
+            The date and time in UTC of the message. If you don't provide us with a value in dateTime, we will set the current date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Type">
+            <summary>
+            The type of message. If logging an error, the type of the exception would go into type but you can put anything in there, that makes sense for your domain.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.User">
+            <summary>
+            An identification of the user triggering this message. You can put the users email address or your user key into this property.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Severity">
+            <summary>
+            An enum value representing the severity of this message. The following values are allowed: Verbose, Debug, Information, Warning, Error, Fatal
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Url">
+            <summary>
+            If message relates to a HTTP request, you may send the URL of that request. If you don't provide us with an URL, we will try to find a key named URL in serverVariables.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Method">
+            <summary>
+            If message relates to a HTTP request, you may send the HTTP method of that request. If you don't provide us with a method, we will try to find a key named REQUEST_METHOD in serverVariables.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Version">
+            <summary>
+            Versions can be used to distinguish messages from different versions of your software. The value of version can be a SemVer compliant string or any other
+            <br/>syntax that you are using as your version numbering scheme.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.CorrelationId">
+            <summary>
+            CorrelationId can be used to group similar log messages together into a single discoverable batch. A correlation ID could be a session ID from ASP.NET Core,
+            <br/>a unique string spanning multiple microsservices handling the same request, or similar.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Code">
+            <summary>
+            Code can be used to include source code related to the log message. The code will typically span from a few lines before the line causing the log message
+            <br/>to a few lines after. For now, all lines above 21 will be removed. This makes room for showing 10 lines before the logging line, the logging line, and
+            <br/>10 lines after the logging line. Don't include a very large string in this property since that will quickly make the entire messages exceed the max limit
+            <br/>of 256 kb.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Category">
+            <summary>
+            The log message category. Category can be a string of choice but typically contain a logging category set by a logging framework like NLog or Serilog.
+            <br/>When logging through a logging framework, this field will be provided by the framework and not something that needs to be set manually.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Cookies">
+            <summary>
+            A key/value pair of cookies. This property only makes sense for logging messages related to web requests.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Form">
+            <summary>
+            A key/value pair of form fields and their values. This property makes sense if logging message related to users inputting data in a form.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.QueryString">
+            <summary>
+            A key/value pair of query string parameters. This property makes sense if logging message related to a HTTP request.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.ServerVariables">
+            <summary>
+            A key/value pair of server values. Server variables are typically related to handling requests in a webserver but could be used for other types of information as well.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Data">
+            <summary>
+            A key/value pair of user-defined fields and their values. When logging an exception, the Data dictionary of
+            <br/>the exception is copied to this property. You can add additional key/value pairs, by modifying the Data
+            <br/>dictionary on the exception or by supplying additional key/values to this API.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessage.Breadcrumbs">
+            <summary>
+            A list of breadcrumbs preceding this log message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.CreateMessageResult.Location">
+            <summary>
+            The location of the created message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.Id">
+            <summary>
+            The ID of this deployment.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.Version">
+            <summary>
+            The version number of this deployment. The value of version can be a SemVer compliant string or any other
+            <br/>syntax that you are using as your version numbering scheme.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.Created">
+            <summary>
+            When was this deployment created.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.CreatedBy">
+            <summary>
+            The elmah.io id of the user creating this deployment. Since deployments are created on a subscription,
+            <br/>the CreatedBy will contain the id of the user with the subscription.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.Description">
+            <summary>
+            Sescription of this deployment in markdown or clear text.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.UserName">
+            <summary>
+            The name of the person responsible for creating this deployment.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.UserEmail">
+            <summary>
+            The email of the person responsible for creating this deployment.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Deployment.LogId">
+            <summary>
+            If the deployment is attached a single log, this property is set to the ID of that log.
+            <br/>If null, the deployment is attached all logs on the organization.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.Item">
+            <summary>
+            Represents a key value pair.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Item.Key">
+            <summary>
+            The key of the item.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Item.Value">
+            <summary>
+            The value of the item.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.Item.#ctor(System.String,System.String)">
+            <summary>
+            Create a new item with the specified key and value.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Log.Id">
+            <summary>
+            ID of the log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Log.Name">
+            <summary>
+            Name of the log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Log.Color">
+            <summary>
+            Color of the log. The color will always be one of the following (green being the default):
+            <br/>green, lightgreen, lime, yellow, orange, deeporange, red, pink, purple, deeppurple, blue, lightblue
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Log.EnvironmentName">
+            <summary>
+            Environment name this log is in or "Other" if not in an environment.
+            <br/>"Other" is chosen over null to mimic the experience in the elmah.io UI.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Log.Disabled">
+            <summary>
+            Returns true if the log is currently disabled. A log can be disabled either through the API
+            <br/>or in the elmah.io UI.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Id">
+            <summary>
+            The ID of this message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Application">
+            <summary>
+            Used to identify which application logged this message. You can use this if you have multiple applications and services logging to the same log
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Detail">
+            <summary>
+            A longer description of the message. For errors this could be a stacktrace, but it's really up to you what to log in there.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Hostname">
+            <summary>
+            The hostname of the server logging the message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Title">
+            <summary>
+            The textual title or headline of the message to log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.TitleTemplate">
+            <summary>
+            The title template of the message to log. This property can be used from logging frameworks that supports
+            <br/>structured logging like: "{user} says {quote}". In the example, titleTemplate will be this string and title
+            <br/>will be "Gilfoyle says It's not magic. It's talent and sweat".
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Source">
+            <summary>
+            The source of the code logging the message. This could be the assembly name.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.StatusCode">
+            <summary>
+            If the message logged relates to a HTTP status code, you can put the code in this property. This would probably only be relevant for errors,
+            <br/>but could be used for logging successful status codes as well.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.DateTime">
+            <summary>
+            The date and time in UTC of the message. If you don't provide us with a value in dateTime, we will set the current date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Type">
+            <summary>
+            The type of message. If logging an error, the type of the exception would go into type but you can put anything in there, that makes sense for your domain.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.User">
+            <summary>
+            An identification of the user triggering this message. You can put the users email address or your user key into this property.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Severity">
+            <summary>
+            An enum value representing the severity of this message. The following values are allowed: Verbose, Debug, Information, Warning, Error, Fatal
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Url">
+            <summary>
+            If message relates to a HTTP request, you may send the URL of that request. If you don't provide us with an URL, we will try to find a key named URL in serverVariables.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Method">
+            <summary>
+            If message relates to a HTTP request, you may send the HTTP method of that request. If you don't provide us with a method, we will try to find a key named REQUEST_METHOD in serverVariables.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Version">
+            <summary>
+            Versions can be used to distinguish messages from different versions of your software. The value of version can be a SemVer compliant string or any other
+            <br/>syntax that you are using as your version numbering scheme.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.CorrelationId">
+            <summary>
+            CorrelationId can be used to group similar log messages together into a single discoverable batch. A correlation ID could be a session ID from ASP.NET Core,
+            <br/>a unique string spanning multiple microsservices handling the same request, or similar.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Code">
+            <summary>
+            Code can be used to include source code related to the log message. The code will typically span from a few lines before the line causing the log message
+            <br/>to a few lines after. For now, all lines above 21 will be removed. This makes room for showing 10 lines before the logging line, the logging line, and
+            <br/>10 lines after the logging line. Don't include a very large string in this property since that will quickly make the entire messages exceed the max limit
+            <br/>of 256 kb.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Category">
+            <summary>
+            The log message category. Category can be a string of choice but typically contain a logging category set by a logging framework like NLog or Serilog.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Cookies">
+            <summary>
+            A key/value pair of cookies. This property only makes sense for logging messages related to web requests.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Form">
+            <summary>
+            A key/value pair of form fields and their values. This property makes sense if logging message related to users inputting data in a form.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.QueryString">
+            <summary>
+            A key/value pair of query string parameters. This property makes sense if logging message related to a HTTP request.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.ServerVariables">
+            <summary>
+            A key/value pair of server values. Server variables are typically related to handling requests in a webserver but could be used for other types of information as well.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Data">
+            <summary>
+            A key/value pair of user-defined fields and their values. When logging an exception, the Data dictionary of
+            <br/>the exception is copied to this property. You can add additional key/value pairs, by modifying the Data
+            <br/>dictionary on the exception or by supplying additional key/values to this API.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Message.Breadcrumbs">
+            <summary>
+            A list of breadcrumbs preceding this log message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Id">
+            <summary>
+            The ID of this message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Application">
+            <summary>
+            Used to identify which application logged this message. You can use this if you have multiple applications and services logging to the same log
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Detail">
+            <summary>
+            A longer description of the message. For errors this could be a stacktrace, but it's really up to you what to log in there.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Hostname">
+            <summary>
+            The hostname of the server logging the message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Title">
+            <summary>
+            The textual title or headline of the message to log.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.TitleTemplate">
+            <summary>
+            The title template of the message to log. This property can be used from logging frameworks that supports
+            <br/>structured logging like: "{user} says {quote}". In the example, titleTemplate will be this string and title
+            <br/>will be "Gilfoyle says It's not magic. It's talent and sweat".
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Source">
+            <summary>
+            The source of the code logging the message. This could be the assembly name.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.StatusCode">
+            <summary>
+            If the message logged relates to a HTTP status code, you can put the code in this property. This would probably only be relevant for errors,
+            <br/>but could be used for logging successful status codes as well.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.DateTime">
+            <summary>
+            The date and time in UTC of the message. If you don't provide us with a value in dateTime, we will set the current date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Type">
+            <summary>
+            The type of message. If logging an error, the type of the exception would go into type but you can put anything in there, that makes sense for your domain.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.User">
+            <summary>
+            An identification of the user triggering this message. You can put the users email address or your user key into this property.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Severity">
+            <summary>
+            An enum value representing the severity of this message. The following values are allowed: Verbose, Debug, Information, Warning, Error, Fatal
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Url">
+            <summary>
+            If message relates to a HTTP request, you may send the URL of that request. If you don't provide us with an URL, we will try to find a key named URL in serverVariables.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Method">
+            <summary>
+            If message relates to a HTTP request, you may send the HTTP method of that request. If you don't provide us with a method, we will try to find a key named REQUEST_METHOD in serverVariables.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Version">
+            <summary>
+            Versions can be used to distinguish messages from different versions of your software. The value of version can be a SemVer compliant string or any other
+            <br/>syntax that you are using as your version numbering scheme.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.CorrelationId">
+            <summary>
+            CorrelationId can be used to group similar log messages together into a single discoverable batch. A correlation ID could be a session ID from ASP.NET Core,
+            <br/>a unique string spanning multiple microsservices handling the same request, or similar.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Code">
+            <summary>
+            Code can be used to include source code related to the log message. The code will typically span from a few lines before the line causing the log message
+            <br/>to a few lines after. For now, all lines above 21 will be removed. This makes room for showing 10 lines before the logging line, the logging line, and
+            <br/>10 lines after the logging line. Don't include a very large string in this property since that will quickly make the entire messages exceed the max limit
+            <br/>of 256 kb.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Category">
+            <summary>
+            The log message category. Category can be a string of choice but typically contain a logging category set by a logging framework like NLog or Serilog.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Cookies">
+            <summary>
+            A key/value pair of cookies. This property only makes sense for logging messages related to web requests.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Form">
+            <summary>
+            A key/value pair of form fields and their values. This property makes sense if logging message related to users inputting data in a form.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.QueryString">
+            <summary>
+            A key/value pair of query string parameters. This property makes sense if logging message related to a HTTP request.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.ServerVariables">
+            <summary>
+            A key/value pair of server values. Server variables are typically related to handling requests in a webserver but could be used for other types of information as well.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Data">
+            <summary>
+            A key/value pair of user-defined fields and their values. When logging an exception, the Data dictionary of
+            <br/>the exception is copied to this property. You can add additional key/value pairs, by modifying the Data
+            <br/>dictionary on the exception or by supplying additional key/values to this API.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageOverview.Breadcrumbs">
+            <summary>
+            A list of breadcrumbs preceding this log message.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessagesResult.Messages">
+            <summary>
+            Log messages.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.MessagesResult.Total">
+            <summary>
+            The total number of log messages found.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Search.Query">
+            <summary>
+            Lucene query.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Search.From">
+            <summary>
+            Search from this date.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.Search.To">
+            <summary>
+            Search to this date.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.UptimeCheck.Id">
+            <summary>
+            ID of the uptime check.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.UptimeCheck.Name">
+            <summary>
+            Name of the uptime check.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.UptimeCheck.Url">
+            <summary>
+            Url of the uptime check.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.UptimeCheck.Status">
+            <summary>
+            Current status of the uptime check.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.ElmahIoOptions">
+            <summary>
+            Options to use when using the elmah.io client.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahIoOptions.FormKeysToObfuscate">
+            <summary>
+            Zero or more form key names to obfuscate before logging messages to elmah.io.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahIoOptions.WebProxy">
+            <summary>
+            Make it possible to communicate with the elmah.io API through a proxy. Proxy settings should
+            be provided on the options when calling the ElmahioAPI.Create method. Once the client has been
+            initialized, setting a proxy in this property will no longer have any effect.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahIoOptions.Timeout">
+            <summary>
+            Modify the default timeout of 5 seconds when communicating with the elmah.io API.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.ElmahIoOptions.UserAgent">
+            <summary>
+            Append a custom user agent to requests made to the elmah.io API. If you are using an integration
+            this will be already handled. If you are using the Elmah.Io.Client package directly, this will be
+            a good way to identify who you are. User agents should be on the form name/version.
+            Example: PiedPiper/1.0.0.0
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ElmahIoOptions.#ctor">
+            <summary>
+            Create a new instance with default options.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.ExceptionExtensions">
+            <summary>
+            Extension methods provided by elmah.io for the Exception class.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ExceptionExtensions.ToMessage(System.Exception)">
+            <summary>
+            Generate a CreateMessage object from an exception. This object can used as a template
+            and decorated with additional properties before sent to the CreateAndNotify method.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ExceptionExtensions.ToDataList(System.Exception)">
+            <summary>
+            Pulls as much information as possible from an Exception to a list of elmah.io Items.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ExceptionExtensions.ExceptionSpecificItems(System.Exception,Elmah.Io.Client.ExceptionExtensions.ExceptionModel)">
+            <summary>
+            Helper method to extract items from different known exception types and their properties.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.ExceptionExtensions.ItemName(System.Exception,System.String)">
+            <summary>
+            Generate an item name of a property on an exception.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.FailEventArgs">
+            <summary>
+            Event args provided as part of the OnMessageFail event.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.FailEventArgs.#ctor(Elmah.Io.Client.CreateMessage,System.Exception)">
+            <summary>
+            Create a new instance.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.FailEventArgs.Message">
+            <summary>
+            The message sent as part of the failing API request.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.FailEventArgs.Error">
+            <summary>
+            The error happened as part of the failing API request.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.IElmahioAPI">
+            <summary>
+            A single type to make it easy to keep all clients in a single location.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.Deployments">
+            <summary>
+            Gets the IDeployments.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.Heartbeats">
+            <summary>
+            Gets the IHeartbeats.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.Logs">
+            <summary>
+            Gets the ILogs.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.Messages">
+            <summary>
+            Gets the IMessages.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.UptimeChecks">
+            <summary>
+            Gets the IUptimeChecks.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.SourceMaps">
+            <summary>
+            Gets the ISourceMapsClient.
+            </summary>
+        </member>
+        <member name="P:Elmah.Io.Client.IElmahioAPI.Options">
+            <summary>
+            The options to use for this client.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.MessageEventArgs">
+            <summary>
+            Event args used to signal a log message being created on elmah.io through the OnMessage event.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.MessageEventArgs.#ctor(Elmah.Io.Client.CreateMessage)">
+            <summary>
+            Create a new instance of the MessageEventArgs class. This is typically only called from within the elmah.io client.
+            </summary>
+            <param name="message">The created log messages</param>
+        </member>
+        <member name="P:Elmah.Io.Client.MessageEventArgs.Message">
+            <summary>
+            The created log message.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.Severity">
+            <summary>
+            Helper enum to generate valid severities.
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.Client.Severity.Verbose">
+            <summary>
+            A verbose log message.
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.Client.Severity.Debug">
+            <summary>
+            A debug log message.
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.Client.Severity.Information">
+            <summary>
+            An information log message.
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.Client.Severity.Warning">
+            <summary>
+            A warning log message.
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.Client.Severity.Error">
+            <summary>
+            An error log message.
+            </summary>
+        </member>
+        <member name="F:Elmah.Io.Client.Severity.Fatal">
+            <summary>
+            A fatal log message.
+            </summary>
+        </member>
+        <member name="T:Elmah.Io.Client.SeverityExtensions">
+            <summary>
+            Extensions methods for the Severity enum.
+            </summary>
+        </member>
+        <member name="M:Elmah.Io.Client.SeverityExtensions.AsString(Elmah.Io.Client.Severity)">
+            <summary>
+            Returns the string representation of a Severity enum value.
+            </summary>
+        </member>
+    </members>
+</doc>

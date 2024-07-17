@@ -1,0 +1,292 @@
+﻿@model ado.Models.products
+@using System.Globalization
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Chi tiết sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    var giaBan = Model.giaBan * 1000;
+    var giaSauGiam = ViewBag.tien;
+}
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Tìm kiếm</h2>
+                    <form action="">
+                        <input type="text" id="check" placeholder="Tìm kiếm">
+                        <div class="single-sidebar" id="load_payment" style="display:none;">
+
+                        </div>
+                        <input type="submit" id="gui1" value="Tìm">
+                    </form>
+
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản phẩm</h2>
+                    <div id="sP1"></div>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="product-breadcroumb">
+                        <a href="">Home</a>
+                        <a href="">Tên Sản Phẩm</a>
+                        <a href="">@Model.tenSP</a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img src="~/images/product/@Model.hinhAnh" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="product-inner">
+                                <h2 class="product-name">@Model.tenSP</h2>
+                                <div class="product-inner-price">
+                                    <ins>@ViewBag.tien.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</ins> <del>@giaBan.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</del>
+                                    <span style="color:red">-@ViewBag.giam</span>
+                                </div>
+
+                                <form action="" class="cart">
+                                    @Html.AntiForgeryToken()
+                                    <div class="quantity">
+                                        <input type="number" class="input-text qty text" id="sluong" value="1" min="1">
+                                    </div>
+                                </form>
+                                <div class="gap-items">
+                                    <button class="btn btn-success" id="datHang1" data-id="@Model.maSP"><i class="mdi mdi-shopping"></i> Buy Now!</button>
+                                    <button class="btn btn-primary" id="add" data-id="@Model.maSP"><i class="mdi mdi-cart-plus"></i> Add To Cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer-top-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>u<span>Stora</span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="">My account</a></li>
+                        <li><a href="">Order history</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Vendor contact</a></li>
+                        <li><a href="">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a href="">Mobile Phone</a></li>
+                        <li><a href="">Home accesseries</a></li>
+                        <li><a href="">LED TV</a></li>
+                        <li><a href="">Computer</a></li>
+                        <li><a href="">Gadets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Type your email">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+    <link href="~/soucreClients/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+
+}
+@section script{
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            loadSP();
+            $("#add").on("click", function () {
+                var maSP = $(this).data("id");
+                var sl = $('#sluong').val();
+                $.ajax({
+                    url: "/sanPham/themGioHang1",
+                    type: "POST",
+                    data: { maSP: maSP, soLuong: sl, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: 'Thêm  thành công ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 6,
+                            });
+                            $('#sluong').val(1);
+                        }
+                    }
+                })
+
+            })
+            $('#datHang1').on('click', function () {
+                var maSP = $(this).data("id");
+                var sl = $('#sluong').val();
+                $.ajax({
+                    url: "/sanPham/BuyNow",
+                    type: "POST",
+                    data: { maSP: maSP, soLuong: sl },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = "/sanPham/checkOutBuyNow";
+                        }
+                    }
+                })
+            })
+            $('body').on('click', '.btndetail1', function () {
+                var maSP = $(this).data('id');
+                $.ajax({
+                    url: "/sanPham/getID",
+                    type: "POST",
+                    data: { maSP: maSP, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                    success: function (res) {
+                        if (res.success) {
+
+                        }
+                    }
+                })
+            })
+            $('body').on('input', '#check', function () {
+                var check = $('#check').val();
+                if (check != '') {
+                    $('#load_payment').show();
+                    $('#gui1').hide();
+                    $.ajax({
+                        url: "/sanPham/timKiemSP",
+                        type: "POST",
+                        data: { timKiem: check },
+                        success: function (res) {
+                            if (res.success) {
+                                var html = "";
+                                var items = res.data;
+                                for (i = 0; i < items.length; i++) {
+                                    html += "<div class='thubmnail-recent'>";
+                                    html += "<img src='/images/product/" + items[i].hinhAnh + "' class='recent-thumb' alt=''>";
+                                    html += " <h2><a href='' data-id='" + items[i].maSP + "' class='btndetail1'>" + items[i].tenSP + "</a></h2>";
+                                    html += " <div class='product-sidebar-price'>";
+                                    html += "<ins>" + items[i].giaBan + "0000VND</ins><span style='color:red'>-" + items[i].maGiam + "%</span>";
+                                    html += "</div>";
+                                    html += "</div>";
+                                }
+                                $('#load_payment').html(html);
+                            }
+                            else {
+                                $('#load_payment').html("Không tìm thấy sản phẩm");
+                            }
+                        }
+                    })
+                } else {
+                    $('#load_payment').hide();
+                    $('#gui1').show();
+                }
+            })
+        })
+        function loadSP() {
+            $.ajax({
+                url: "/sanPham/loadSP",
+                type: "POST",
+                success: function (res) {
+                    if (res.success) {
+                        var html = "";
+                        var items = res.data;
+                        for (i = 0; i < items.length; i++) {
+                            html += "<div class='thubmnail-recent'>";
+                            html += "<img src='/images/product/" + items[i].hinhAnh + "' class='recent-thumb' alt=''>";
+                            html += " <h2><a href='' data-id='" + items[i].maSP + "' class='btndetail1'>" + items[i].tenSP + "</a></h2>";
+                            html += " <div class='product-sidebar-price'>";
+                            html += "<ins>" + items[i].giaBan.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</ins><span style='color:red'>-" + items[i].maGiam + "%</span>";
+                            html += "</div>";
+                            html += "</div>";
+                        }
+                        $('#sP1').html(html);
+                    }
+                }
+            })
+        }
+
+    </script>
+}
+

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "VnpayReturn";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container product_section_container">
+    <div class="row">
+        <div class="col product_section clearfix">
+            <!-- Breadcrumbs -->
+            <!-- Sidebar -->
+            <!-- Main Content -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="">Thanh toán</h1>
+                    @if (ViewBag.ThanhToanThanhCong != null)
+                    {
+                        <p style="color:chartreuse">Bạn đã thanh toán thành công với @ViewBag.ThanhToanThanhCong!</p>
+                    }
+                else
+            {
+                <p style="color:red">Bạn chưa có đơn hàng cần thanh toán</p>
+            }
+                    <p>@ViewBag.InnerText</p>
+                </div>
+
+            </div>
+            <hr />
+            <a href="@Url.Action("Index","sanPham")" class="btn btn-info"><i class="fa fa-arrow-left"></i> Quay lại mua hàng</a>
+            @*<div class="row">
+            <div id="show_success"></div>
+            <div class="col-md-9">
+
+            </div>
+
+        </div>*@
+        </div>
+    </div>
+</div>
+

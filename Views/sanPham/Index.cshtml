@@ -1,0 +1,211 @@
+﻿@model List<ado.Models.products>
+@using System.Globalization
+@{
+    Page.Title = "Cửa Hàng";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            @Html.AntiForgeryToken();
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-product">
+                        <div class="product-f-image">
+                            <img src="~/images/product/@item.hinhAnh" />
+                            <div class="product-hover">
+                                <a href="#" class="add-to-cart-link btnadd" data-id="@item.maSP"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" data-id="@item.maSP" class="view-details-link btndetail"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+
+                        <h2><a href="single-product.html">@item.tenSP</a></h2>
+                        @{ decimal phamTram = (decimal)item.maGiam / 100;
+                            var x = item.giaBan - (item.giaBan * phamTram);
+                            var gia1 = item.giaBan;
+                            }
+                        <div class="product-carousel-price">
+                            <ins>@x.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</ins><del>@gia1.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</del>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-pagination text-center">
+                    <nav>
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer-top-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>u<span>Stora</span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="">My account</a></li>
+                        <li><a href="">Order history</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Vendor contact</a></li>
+                        <li><a href="">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a href="">Mobile Phone</a></li>
+                        <li><a href="">Home accesseries</a></li>
+                        <li><a href="">LED TV</a></li>
+                        <li><a href="">Computer</a></li>
+                        <li><a href="">Gadets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Type your email">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+
+}
+@section script{
+    <script src="~/soucreClients/js/bxslider.min.js"></script>
+    <script src="~/soucreClients/js/script.slider.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btnadd").on("click", function () {
+                var maSP = $(this).data("id");
+                $.ajax({
+                    url: "/sanPham/themGioHang",
+                    type: "POST",
+                    data: { maSP: maSP },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: 'Thêm Sản Phẩm Vào Giỏ Hàng ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 6,
+                            });
+                        }
+
+                    }
+                })
+            })
+            $(".btndetail").on("click", function () {
+                var maSP = $(this).data("id");
+
+                $.ajax({
+                    url: "/sanPham/getID",
+                    type: "POST",
+                    data: { maSP: maSP, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = '/sanPham/detail'
+                        }
+                    }
+                })
+
+            })
+
+
+        })
+    </script>
+}
+

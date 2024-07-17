@@ -1,0 +1,12 @@
+2024-01-24 20:30:41.217 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-01-24 21:48:01.144 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-01-24 22:04:29.605 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-01-24 22:04:29.608 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-01-24 22:07:02.451 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-01-24 22:09:06.674 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}

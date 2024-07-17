@@ -1,0 +1,507 @@
+﻿
+@{
+    ViewBag.Title = "checkOut";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shopping Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Tìm kiếm</h2>
+                    <form action="">
+                        <input type="text" id="check" placeholder="Tìm kiếm">
+                        <div class="single-sidebar" id="load_payment1" style="display:none;">
+
+                        </div>
+                        <input type="submit" id="gui1" value="Tìm">
+                    </form>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản phẩm</h2>
+                    <div id="sP1"></div>
+                </div>
+
+               
+            </div>
+
+            <div class="col-md-8">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Hình Ảnh</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Số Lượng</th>
+                                <th>Giảm giá</th>
+                                <th class="w-200">Giá Bán </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="donMua1">
+                        </tbody>
+                    </table>
+                    <h2 style="color:red" id="checkdon1"></h2>
+                </div>
+
+                <hr>
+                <h3>Thông tin khách hàng</h3>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label>Họ tên khách hàng</label>
+                    <input type="text" id="tenKH" name="CustomerName" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" id="SDT" name="Phone" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="diaChi" name="Address" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label>Hình thức thanh toán</label>
+                    <select class="form-control" name="TypePayment" id="type1">
+                        <option value="1" selected>Trả Sau</option>
+                        <option value="2">Chuyển khoản</option>
+                    </select>
+                </div>
+                <div class="form-group" id="load_payment" style="display:none;">
+                    <h5>Chọn phương thức thanh toán<span class="text-danger">*</span></h5>
+                    <fieldset class="controls">
+                        <input name="group1" type="radio" id="radio_0" value="0" required>
+                        <label for="radio_0">Chuyển hướng sang VNPAY</label>
+                    </fieldset>
+                    <fieldset>
+                        <input name="group1" type="radio" id="radio_1" value="1">
+                        <label for="radio_1">Thanh toán qua ứng dụng hỗ trợ VNPAYOR</label>
+                    </fieldset>
+                    <fieldset>
+                        <input name="group1" type="radio" id="radio_2" value="2">
+                        <label for="radio_2">ATM tài khoản nội địa</label>
+                    </fieldset>
+                    <fieldset>
+                        <input name="group1" type="radio" id="radio_3" value="3">
+                        <label for="radio_3">Thanh toán qua thẻ quốc tế</label>
+                    </fieldset>
+                </div>
+                <div class="form-group" id="load_send"></div>
+                <div class="form-group">
+                    <button type="submit" id="datHang" class="btn btn-block btn-success">Đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer-top-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>u<span>Stora</span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="">My account</a></li>
+                        <li><a href="">Order history</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Vendor contact</a></li>
+                        <li><a href="">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a href="">Mobile Phone</a></li>
+                        <li><a href="">Home accesseries</a></li>
+                        <li><a href="">LED TV</a></li>
+                        <li><a href="">Computer</a></li>
+                        <li><a href="">Gadets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Type your email">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section css{
+
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+
+}
+@section script{
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- <script src="~/Scripts/jquery-3.7.0.slim.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.slim.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            load();
+            loadSP();
+            $('body').on('change', '#type1', function () {
+                var type = $(this).val();
+                if (type == 1) {
+                    $('#load_payment').hide();
+                }
+                if (type == 2) {
+                    $('#load_payment').show();
+                }
+            })
+            $('body').on('click', '#datHang', function () {
+                var type = $('#type1').val();
+                var check = $('.btnma').text();
+                if (type == 1) {
+                    
+                        var tableData = [];
+                        var tenKH = $('#tenKH').val();
+                        var diaChi = $('#diaChi').val();
+                        var sdt = $('#SDT').val();
+                        var giamGia1 = $('#giamgia1').text();
+                    var tienTra1 = $('#tienTra2').text();
+                    var tien = tienTra1.toString();
+                        var ktraSDT = /^[0-9]{10}$/;
+
+                        if (giamGia1 == 'Không có mã giảm') {
+                            giamGia1 = "0%";
+                        }
+                        if (ktraSDT.test(sdt) == false) {
+                            $('.errorphone').text("SDT không đúng định dạng");
+                        }
+                        if (tenKH == "" || diaChi == "" || sdt == "") {
+                            $.toast({
+                                heading: 'Thông tin nhập chưa đủ',
+                                text: 'Cần nhập đầy đủ thông tin',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'warning',
+                                hideAfter: 3500,
+                                stack: 6,
+
+                            });
+
+                        }
+                        else {
+                            if ($('#checkdon1').html() == "Chưa có thông tin") {
+                                $.toast({
+                                    heading: 'Đơn Chưa có sản phẩm',
+                                    text: 'Vào Shop để chọn sản phẩm phù hợp',
+                                    position: 'top-right',
+                                    loaderBg: '#ff6849',
+                                    icon: 'warning',
+                                    hideAfter: 3500,
+                                    stack: 6,
+
+                                });
+                            }
+
+                            else {
+                                $("#donMua1 tr").each(function () {
+                                    var rowData = {
+                                        maSP: $(this).find(".btnma").data('id'),
+                                        soLuong: $(this).find(".btnSL").data('id'),
+
+                                    };
+                                    tableData.push(rowData);
+                                });
+                                $.ajax({
+                                    url: '/sanPham/datHang',
+                                    type: 'POST',
+                                    data: { lst: tableData, tenKH: tenKH, diaChi: diaChi, giamGia: giamGia1, tienTra: tien, SDT: sdt, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                                    success: function (res) {
+                                        if (res.success) {
+                                            $.toast({
+                                                heading: 'Thành Công  ',
+                                                text: 'Mua Hàng ',
+                                                position: 'top-right',
+                                                loaderBg: '#ff6849',
+                                                icon: 'success',
+                                                hideAfter: 1500,
+                                                stack: 1,
+
+                                            });
+                                            reset();
+                                        } else {
+                                            $.toast({
+                                                heading: 'Cảnh Báo',
+                                                text: 'không được sử dụng cách gây ảnh hưởng đến website',
+                                                position: 'top-right',
+                                                loaderBg: '#ff6849',
+                                                icon: 'error',
+                                                hideAfter: 3500
+
+                                            });
+                                        }
+
+                                    }
+                                })
+                            }
+                        }
+                    } 
+                if (type == 2) {
+                    var Data = [];
+                    var kieuTT = $('input[name="group1"]:checked').val();
+                    var tenKH = $('#tenKH').val();
+                    var diaChi = $('#diaChi').val();
+                    var sdt = $('#SDT').val();
+                    var giamGia2 = $('#giamgia1').text();
+                    var tienTra2 = $('#tienTra2').text();
+                    if (giamGia1 == 'Không có mã giảm') {
+                        giamGia1 = "0%";
+                    }
+                    
+                    if (tenKH == "" || diaChi == "" || sdt == "") {
+                        $.toast({
+                            heading: 'Thông tin nhập chưa đủ',
+                            text: 'Cần nhập đầy đủ thông tin',
+                            position: 'top-right',
+                            loaderBg: '#ff6849',
+                            icon: 'warning',
+                            hideAfter: 3500,
+                            stack: 6,
+
+                        });
+
+                    }
+                    else {
+                        if ($('#checkdon1').html() == "Chưa có thông tin") {
+                            $.toast({
+                                heading: 'Đơn Chưa có sản phẩm',
+                                text: 'Vào Shop để chọn sản phẩm phù hợp',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'warning',
+                                hideAfter: 3500,
+                                stack: 6,
+
+                            });
+                        }
+                        else {
+                            $("#donMua1 tr").each(function () {
+                                var rowData = {
+                                    maSP: $(this).find(".btnma").data('id'),
+                                    soLuong: $(this).find(".btnSL").data('id'),
+
+                                };
+                                Data.push(rowData);
+                            });
+                            $.ajax({
+                                url: '/sanPham/thanhToanDon',
+                                type: 'POST',
+                                data: { ds: Data, tenKH: tenKH, diaChi: diaChi, giamGia: giamGia2, tienTra: tienTra2, SDT: sdt, Type: kieuTT, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                                success: function (res) {
+                                    if (res.success) {
+                                        OnBeginCO();
+                                        window.location.href = res.url;
+                                    } else {
+                                        $.toast({
+                                            heading: 'Cảnh Báo',
+                                            text: 'không được sử dụng cách gây ảnh hưởng đến website',
+                                            position: 'top-right',
+                                            loaderBg: '#ff6849',
+                                            icon: 'error',
+                                            hideAfter: 3500
+
+                                        });
+                                    }
+
+                                }
+                            })
+                        }
+                    }
+                    
+
+                }
+
+            })
+            $('body').on('input', '#check', function () {
+                var check = $('#check').val();
+                if (check != '') {
+                    $('#load_payment1').show();
+                    $.ajax({
+                        url: "/sanPham/timKiemSP",
+                        type: "POST",
+                        data: { timKiem: check },
+                        success: function (res) {
+                            if (res.success) {
+                                var html = "";
+                                var items = res.data;
+                                for (i = 0; i < items.length; i++) {
+                                    html += "<div class='thubmnail-recent'>";
+                                    html += "<img src='/images/product/" + items[i].hinhAnh + "' class='recent-thumb' alt=''>";
+                                    html += " <h2><a href='' data-id='" + items[i].maSP + "' class='btndetail1'>" + items[i].tenSP + "</a></h2>";
+                                    html += " <div class='product-sidebar-price'>";
+                                    html += "<ins>" + items[i].giaBan + "0000VND</ins><span style='color:red'>-" + items[i].maGiam + "%</span>";
+                                    html += "</div>";
+                                    html += "</div>";
+                                }
+                                $('#load_payment1').html(html);
+                            }
+                            else {
+                                $('#load_payment1').html("Không tìm thấy sản phẩm");
+                            }
+                        }
+                    })
+                } else {
+                    $('#load_payment1').hide();
+                    $('#gui1').show();
+                }
+            })
+            $('body').on('click', '.btndetail1', function () {
+                var maSP = $(this).data("id");
+                $.ajax({
+                    url: "/sanPham/getID",
+                    type: "POST",
+                    data: { maSP: maSP, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = '/sanPham/detail';
+                        }
+                    }
+                })
+            })
+
+        })
+        function load() {
+            $.ajax({
+                url: "/sanPham/checkOUt1",
+                type: "POST",
+                success: function (res) {
+                    var items = res.data;
+                    var html = "";
+                    if (res.count > 0) {
+                        for (let i = 0; i < res.count; i++) {
+                            html += "<tr>";
+                            html += "<td><img src='/images/product/" + items[i].hinhAnh + "' alt='' width='80'></td>"
+                            html += "<td> <h5 data-id='" + items[i].maSP + "' class='btnma'>" + items[i].tenSP + "</h5></td>"
+                            html += "<td width='70' class='btnSL' data-id='" + items[i].soLuong + "'>" + items[i].soLuong + "</td>"
+                            html += "<td>" + items[i].giamGia + "%</td>"
+                            html += "<td> " + (items[i].giaBan * 1000).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + " </td>" 
+                            html += "</tr>";
+                        }
+                        var tongTien = res.tongtien.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
+                        var tienTra = res.thanhTien.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+                        html += "<tr><th colspan='3' class='text-right'>Tổng Tiền </th><th><span id='tongTien2'>" + tongTien + "</span></th></tr>";
+                        html += "<tr><td colspan='3' class='text-right font-size-24 font-weight-700' > Số Tiền Phải Trả</td><td class='font-size-24 font-weight-700'><span id='tienTra2'>" + tienTra + "</span></td></tr>";
+                        $('#donMua1').html(html);
+                        if (res.giamGia == '') {
+                            $('#giamgia1').html("Không có mã giảm");
+                        }
+                        else {
+                            $('#giamgia1').html(res.giamGia);
+                        }
+                    }
+                    else if (res.count == 0) {
+                        $('#checkdon1').html("Chưa có thông tin");
+                        $('#donMua1').hide();
+                        $('#tongTien').text("0");
+                        $('#tienTra').text("0");
+
+                    }
+
+                }
+            })
+        }
+        function reset() {
+            $('#tenKH').val('');
+            $('#diaChi').val('');
+            $('#SDT').val('');
+            $('#donMua1').html('');
+        }
+        function OnBeginCO() {
+            $('#datHang').attr("disabled", "disabled");
+            $('#load_send').html('<h2>Đang gửi....</h2>');
+        }
+        function loadSP() {
+            $.ajax({
+                url: "/sanPham/loadSP",
+                type: "POST",
+                success: function (res) {
+                    if (res.success) {
+                        var html = "";
+                        var items = res.data;
+                        for (i = 0; i < items.length; i++) {
+                            html += "<div class='thubmnail-recent'>";
+                            html += "<img src='/images/product/" + items[i].hinhAnh + "' class='recent-thumb' alt=''>";
+                            html += " <h2><a href='' data-id='" + items[i].maSP + "' class='btndetail1'>" + items[i].tenSP + "</a></h2>";
+                            html += " <div class='product-sidebar-price'>";
+                            html += "<ins>" + items[i].giaBan.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</ins><span style='color:red'>-" + items[i].maGiam + "%</span>";
+                            html += "</div>";
+                            html += "</div>";
+                        }
+                        $('#sP1').html(html);
+                    }
+                }
+            })
+        }
+    </script>
+}
+

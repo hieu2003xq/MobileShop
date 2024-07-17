@@ -1,0 +1,52 @@
+2024-05-02 14:53:03.624 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 14:53:36.082 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 15:10:32.153 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:11:00.388 +07:00 [Warning] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/suaSP","Dữ liệu được lấy từ:":""}
+2024-05-02 15:11:04.043 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:12:18.831 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:12:43.230 +07:00 [Warning] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/suaSP","Dữ liệu được lấy từ:":""}
+2024-05-02 15:12:43.555 +07:00 [Warning] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/suaSP","Dữ liệu được lấy từ:":""}
+2024-05-02 15:12:57.210 +07:00 [Warning] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/suaSP","Dữ liệu được lấy từ:":""}
+2024-05-02 15:12:57.517 +07:00 [Warning] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/suaSP","Dữ liệu được lấy từ:":""}
+2024-05-02 15:13:43.667 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:13:54.643 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 15:14:05.770 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:14:42.369 +07:00 [Information] 
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/datHang","Dữ liệu được lấy từ:":""}
+2024-05-02 15:14:45.305 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:14:48.138 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 15:15:01.499 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:15:02.628 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 15:58:54.816 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 17:54:34.895 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 18:01:26.546 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 18:01:48.318 +07:00 [Information] 
+{"IP":"192.168.0.1","Truy cập đến":"/Admin/QLdonHang/xoaDon","Dữ liệu được lấy từ:":""}
+2024-05-02 18:01:48.791 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 18:49:51.102 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-05-02 18:50:54.338 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-05-02 18:57:15.647 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/QLdonHang/layDsDon","Dữ liệu được lấy từ:":"SQL"}

@@ -1,0 +1,20 @@
+2024-06-11 21:22:55.220 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-06-11 21:23:16.364 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-06-11 21:23:54.807 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-06-11 21:24:01.372 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-06-11 21:24:10.493 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-06-11 21:24:34.442 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-06-11 21:24:42.175 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-06-11 21:27:20.661 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"Redis"}
+2024-06-11 21:57:42.183 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham","Dữ liệu được lấy từ:":"SQL"}
+2024-06-11 21:57:44.105 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}

@@ -1,0 +1,235 @@
+﻿
+@{
+    ViewBag.Title = "Chat";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+
+<div class="container-full">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-12">
+                <div class="box">
+                    <div class="box-header">
+                        <ul class="nav nav-tabs customtab nav-justified" role="tablist">
+                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#messages" role="tab">Chat </a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#contacts" role="tab">New</a> </li>
+                        </ul>
+                    </div>
+                    <div class="box-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="messages" role="tabpanel">
+                                <div class="chat-box-one-side3">
+                                    <div id="receivedMessages" style="color:red"></div>
+                                    <div class="media-list media-list-hover" id="loadDS1">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="contacts" role="tabpanel">
+                                <div class="chat-box-one-side3">
+                                    <div class="media-list media-list-hover">
+                                        <div class="media py-10 px-0 align-items-center">
+                                            <a class="avatar avatar-lg status-success" href="#">
+
+                                                <img src="~/product/avatar-trang-4.jpg" />
+                                            </a>
+                                            <div class="media-body">
+                                                <p class="font-size-16">
+                                                    <a class="hover-primary" href="#">Sarah Kortney</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-12">
+                <div class="row">
+                    <div class="col-xxxl-8 col-lg-7 col-12" id="lst11">
+                        <div class="box bg-lightest" id="showMess1" style="display:none;">
+                            <div class="box-header">
+                                <div class="media align-items-top p-0">
+                                    <a class="avatar avatar-lg status-success mx-0" href="#">
+
+                                        <img src="~/product/avatar-trang-4.jpg" />
+                                    </a>
+                                    <div class="d-lg-flex d-block justify-content-between align-items-center w-p100">
+                                        <div class="media-body mb-lg-0 mb-20">
+                                            <p class="font-size-16">
+                                                <a class="hover-primary" href="#"><strong><span class="btnTen1"></span></strong></a>
+                                            </p>
+                                            <p class="font-size-12"><span id="trangThai"></span></p>
+                                        </div>
+                                        <div>
+                                            <ul class="list-inline mb-0 font-size-18">
+                                                <li class="list-inline-item"><a href="#" class="hover-primary"><i class="fa fa-phone"></i></a></li>
+                                                <li class="list-inline-item"><a href="#" class="hover-primary"><i class="fa fa-video-camera"></i></a></li>
+                                                <li class="list-inline-item"><a href="#" class="hover-primary"><i class="fa fa-ellipsis-h"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="chat-box-one2" id="tinNhan1">
+                                   
+                                    <div class="clearfix"></div>
+
+                                </div>
+                            </div>
+                            <div class="box-footer no-border">
+                                <div class="d-md-flex d-block justify-content-between align-items-center bg-white p-5 rounded20 b-1 overflow-hidden">
+                                    <input class="form-control b-0 py-10" type="text" placeholder="Say something " id="msg1">
+                                    <div class="d-flex justify-content-between align-items-center mt-md-0 mt-30">
+                                        <button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-secondary">
+                                            <i class="mdi mdi-link"></i>
+                                        </button>
+                                        <button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-secondary">
+                                            <i class="mdi mdi-face"></i>
+                                        </button>
+                                        <button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-secondary">
+                                            <i class="mdi mdi-microphone"></i>
+                                        </button>
+                                        <button type="button" class="waves-effect waves-circle btn btn-circle btn-primary" id="gui1">
+                                            <i class="mdi mdi-send"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+@section script{
+    
+    <script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script>
+        $(document).ready(function () {
+            
+            var chatHub = $.connection.Chat;
+            loadDS($('#tenDN1').text());
+            taoKetNoi(chatHub); 
+            $('#gui1').on('click', function () {
+                $.connection.hub.start().done(function () {
+                    sendMessage(chatHub);
+                    console.log('thanh conggg');
+                })
+            })
+           
+            console.log(chatHub);
+            chatHub.client.receiveMessage = function (fromUser, message) {
+                if (fromUser == $('#tenDN1').text()) {
+                    if ($('#tenDN1').text() != '') {
+                        showTinNhanBenNgGui($('#msg1').val());
+                    }
+                }
+                else {
+                    displayMessage(fromUser, message);
+                }
+                
+                // Xử lý tin nhắn nhận được, có thể hiển thị trên giao diện người dùng
+            };
+           
+
+
+        })
+      
+        function displayMessage(fromUserId, message) {
+            
+            var chatContainer = $('#tinNhan1');
+            chatContainer.append('<div class="card d-inline-block mb-3 float-left mr-2 no-shadow bg-lighter max-w-p80"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">09:28</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="/product/avatar-trang-4.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-dark">' + fromUserId + '</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">' + message + '</p></div></div></div><div class="clearfix"></div>	');
+            console.log(fromUserId + "  " + message);
+        }
+ 
+        function sendMessage(chatHub) {
+           
+            if ($('.btnTen1').text() != '') {
+                var toUser = $('.btnTen1').text();
+                var message = $('#msg1').val();
+                var fromUser = $('#tenDN1').text();
+                if ($.connection.hub.state === $.signalR.connectionState.connected) {
+                    chatHub.server.sendMessage(fromUser, toUser, message);
+                    showTinNhanBenNgGui(message);
+                    $('#msg1').val('');
+                    
+                    console.log('Kết nối SignalR OK');
+                } else {
+                    console.log('Kết nối SignalR chưa hoàn tất.');
+                }
+            }
+            
+
+        }
+        function showTinNhanBenNgGui(message) {
+            var chatContainer = $('#tinNhan1');
+            chatContainer.append('<div class="card d-inline-block mb-3 float-right mr-2 bg-primary max-w-p80"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small">09:41</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="/product/avatar-trang-4.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16">You</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">' + message + '</p></div></div></div><div class="clearfix"></div>');
+        }
+        function taoKetNoi(chatHub) {
+            $.connection.hub.start().done(function () {
+                var toUserId = $('#tenDN1').text();
+                
+                    chatHub.server.taoketNoi(toUserId);
+             
+                
+            })
+        }
+        function check(chat) {
+            $.connection.hub.start().done(function () {
+                console.log(chat);
+                var fromUserId = $('#tenDN1').text();
+                chat.server.trangThai(fromUserId, $('.btnTen1').text());
+            });
+            chat.client.thongBao = function (message) {
+                $('#trangThai').text(message);
+
+                // Xử lý tin nhắn nhận được, có thể hiển thị trên giao diện người dùng
+            };
+        }
+        function loadDS(ten) {
+            $.ajax({
+                url: "/Admin/Chat/loadDS",
+                type: "GET",
+                data: { ten: ten },
+                success: function (res) {
+                    if (res.success) {
+                        var items = res.data;
+                        var html1 = "";
+                        for (let i = 0; i < items.length; i++) {
+                            
+                            $('body').on('click', '.btnclick1' + i + '', function () {
+                                $("#showMess1").show();
+                                $('.btnTen1').text(items[i].tenDN);
+                               
+                            });
+                            html1 += "<div class='media'>";
+                            html1 += "<a class='align-self-center mr-0 btnclick1" + i + "' href='#'><img class='avatar avatar-lg' src='/product/avatar-trang-4.jpg' alt='~.'></a>";
+                            html1 += "<div class='media-body'>";
+                            html1 += "<p>";
+                            html1 += "<a class='hover-primary btnclick1" + i + "' href='#'><strong>" + items[i].tenDN + "</strong></a>";
+                            html1 += "<span class='float-right font-size-10'>10:00pm</span>";
+                            html1 += "</p>";
+                            html1 += "</div>";
+                            html1 += "</div>";
+
+                        }
+                        $('#loadDS1').html(html1);
+                    }
+                }
+            })
+        }
+    </script>
+
+
+}

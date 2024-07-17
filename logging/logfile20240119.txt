@@ -1,0 +1,12 @@
+2024-01-19 17:52:21.639 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/Home/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-01-19 17:52:26.211 +07:00 [Information] Thành công
+{"IP":"192.168.0.1","Truy cập đến":"/sanPham/Index","Dữ liệu được lấy từ:":"SQL"}
+2024-01-19 17:54:30.078 +07:00 [Information] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/XoaSP","Dữ liệu được lấy từ:":""}
+2024-01-19 17:54:41.413 +07:00 [Information] 
+{"IP":"192.168.0.1","Truy cập đến":"/Admin/QLsanPham/ThemSP","Dữ liệu được lấy từ:":""}
+2024-01-19 17:54:49.982 +07:00 [Warning] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/suaSP","Dữ liệu được lấy từ:":""}
+2024-01-19 18:01:10.539 +07:00 [Information] 
+{"IP":"192.168.0.1","Truy cập đến":"/QLsanPham/XoaSP","Dữ liệu được lấy từ:":""}

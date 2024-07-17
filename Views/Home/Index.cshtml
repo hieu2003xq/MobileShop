@@ -1,0 +1,378 @@
+﻿@model List<ado.Models.products>
+@using System.Globalization
+@{
+    Page.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="slider-area">
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <img src="~/images/product/@item.hinhAnh" style="height:500px" />
+                    <div class="caption-group">
+                        <h2 class="caption title">
+                            @item.tenSP
+                        </h2>
+
+                        <a class="caption button-radius" href="@Url.Action("Index","sanPham")"><span class="icon"></span>Shop now</a>
+                    </div>
+                </li>
+            }
+
+        </ul>
+    </div>
+    <!-- ./Slider -->
+</div> <!-- End slider area -->
+
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo1">
+                    <i class="fa fa-refresh"></i>
+                    <p>30 Days return</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo2">
+                    <i class="fa fa-truck"></i>
+                    <p>Free shipping</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo3">
+                    <i class="fa fa-lock"></i>
+                    <p>Secure payments</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo4">
+                    <i class="fa fa-gift"></i>
+                    <p>New products</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End promo area -->
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">Latest Products</h2>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/soucreClients/img/@item.hinhAnh" />
+                                    <div class="product-hover">
+                                        <a href="#" class="add-to-cart-link btnadd" data-id="@item.maSP"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="#" class="view-details-link btndetail" data-id="@item.maSP"><i class="fa fa-link"></i> See details</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="single-product.html">@item.tenSP</a></h2>
+                                @{ decimal phamTram = (decimal)item.maGiam / 100;
+                                    var x = (item.giaBan - (item.giaBan * phamTram))*1000;
+                                    var gia1 = item.giaBan * 1000;}
+                                <div class="product-carousel-price">
+                                    <ins>@x.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</ins> <del>@gia1.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</del>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End main content area -->
+
+<div class="brands-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="brand-wrapper">
+                    <div class="brand-list">
+                        <img src="~/soucreClients/img/brand1.png" alt="">
+                        <img src="~/soucreClients/img/brand2.png" alt="">
+                        <img src="~/soucreClients/img/brand3.png" alt="">
+                        <img src="~/soucreClients/img/brand4.png" alt="">
+                        <img src="~/soucreClients/img/brand5.png" alt="">
+                        <img src="~/soucreClients/img/brand6.png" alt="">
+                        <img src="~/soucreClients/img/brand1.png" alt="">
+                        <img src="~/soucreClients/img/brand2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End brands area -->
+@Html.AntiForgeryToken();
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Sản Phẩm bán chạy</h2>
+                    <div id="dsBanChay1">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Vừa xem</h2>
+                    <div id="xemGanDay1">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Sản phẩm mới nhất</h2>
+                    @foreach (var item in @ViewBag.topNew)
+                    {
+                        <div class="single-wid-product">
+                            <a href="#" class="btndetail" data-id="@item.maSP"><img src="~/images/product/@item.hinhAnh" alt="" class="product-thumb"></a>
+                            <h2><a href="#" class="btndetail" data-id="@item.maSP">@item.tenSP</a></h2>
+                            <div class="product-wid-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            @{
+                                var gia = item.giaBan * 1000;
+                            }
+                            <div class="product-wid-price">
+                                <ins>@gia.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"))</ins>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End product widget area -->
+
+<div class="footer-top-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>u<span>Stora</span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="#">My account</a></li>
+                        <li><a href="#">Order history</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Vendor contact</a></li>
+                        <li><a href="#">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a href="#">Mobile Phone</a></li>
+                        <li><a href="#">Home accesseries</a></li>
+                        <li><a href="#">LED TV</a></li>
+                        <li><a href="#">Computer</a></li>
+                        <li><a href="#">Gadets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <div class="newsletter-form">
+                        <form action="#">
+                            <input type="email" placeholder="Type your email">
+                            <input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End footer top area -->
+
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+    <!-- EduAdmin App -->
+
+}
+
+@section script{
+    <script src="~/soucreClients/js/bxslider.min.js"></script>
+    <script src="~/soucreClients/js/script.slider.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            loadbanChay();
+            xemGanDay();
+            $(".btnadd").on("click", function () {
+                var maSP = $(this).data("id");
+                $.ajax({
+                    url: "/sanPham/themGioHang",
+                    type: "POST",
+                    data: { maSP: maSP },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: 'Thêm Sản Phẩm Vào Giỏ Hàng ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 6,
+                            });
+                        }
+
+                    }
+                })
+            })
+            $(".btndetail").on("click", function () {
+                var maSP = $(this).data("id");
+                $.ajax({
+                    url: "/sanPham/getID",
+                    type: "POST",
+                    data: { maSP: maSP, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = '/sanPham/detail';
+                        }
+                    }
+                })
+
+            })
+            $('body').on('click', '.btndetail3', function () {
+                var maSP = $(this).data("id");
+                $.ajax({
+                    url: "/sanPham/getID",
+                    type: "POST",
+                    data: { maSP: maSP, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = '/sanPham/detail';
+                        }
+                    }
+                })
+            })
+
+
+        })
+        function loadbanChay() {
+            $.ajax({
+                url: "/sanPham/banChay",
+                type: "POST",
+                success: function (res) {
+                    if (res.success) {
+                        var items = res.data;
+                        var html1 = "";
+                        for (let i = 0; i < items.length; i++) {
+                            html1 += " <div class='single-wid-product'>";
+                            html1 += "<a href='' data-id='" + items[i].maSP + "' class='btndetail3'><img src='/images/product/" + items[i].hinhAnh + "' alt='1111' class='product-thumb'/></a>";
+                            html1 += " <h2><a href='' data-id='" + items[i].maSP + "' class='btndetail3'>" + items[i].tenSP + "</a></h2>";
+                            html1 += " <div class='product-wid-rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></div > ";
+                            html1 += "<div class='product-wid-price'><ins>" + items[i].giaBan.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</ins></div> ";
+                            html1 += "</div>";
+                        }
+                        $("#dsBanChay1").append(html1);
+
+
+                    }
+                }
+            })
+        }
+        function xemGanDay() {
+            $.ajax({
+                url: "/sanPham/XemGanDay1",
+                type: "POST",
+                success: function (res) {
+                    if (res.success) {
+                        var items = res.data;
+                        var html1 = "";
+                        for (let i = items.length - 1; i >= 0; i--) {
+                            var x = 1;
+                            html1 += " <div class='single-wid-product'>";
+                            html1 += "<a href='' data-id='" + items[i].maSP + "' class='btndetail3'><img src='/images/product/" + items[i].hinhAnh + "' alt='1111' class='product-thumb'/></a>";
+                            html1 += " <h2><a href='' data-id='" + items[i].maSP + "' class='btndetail3'>" + items[i].tenSP + "</a></h2>";
+                            html1 += " <div class='product-wid-rating'><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i></div > ";
+                            html1 += "<div class='product-wid-price'><ins>" + items[i].giaBan.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</ins></div> ";
+                            html1 += "</div>";
+                            x++;
+                        }
+                        var totalItems = $('#xemGanDay1 >#xemGanDay1').length;
+                        var startIndex = totalItems - 3;
+                        $("#xemGanDay1").append(html1);
+                        $("#xemGanDay1 >#xemGanDay1 :lt(" + startIndex + ")").hide();
+
+
+                    }
+                    else {
+                        $("#xemGanDay1").append("");
+                    }
+                }
+
+            })
+        }
+
+    </script>
+}
+

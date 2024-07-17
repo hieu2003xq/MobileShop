@@ -1,0 +1,373 @@
+﻿@model ado.Models.products
+@{
+    ViewBag.Title = "chiTietSP";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container-full">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="page-title">Details</h3>
+                <div class="d-inline-block align-items-center">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                            <li class="breadcrumb-item" aria-current="page">e-Commerce</li>
+                            <li class="breadcrumb-item active" aria-current="page">Details</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="box box-body b-1 text-center no-shadow">
+                                    <img src="~/images/product/@Model.hinhAnh" id="product-image" class="img-fluid" alt="" />
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                            <div class="col-md-8 col-sm-6">
+                                <h2 class="box-title mt-0">@Model.tenSP</h2>
+                                <div class="list-inline">
+                                    <a class="text-warning"><i class="mdi mdi-star"></i></a>
+                                    <a class="text-warning"><i class="mdi mdi-star"></i></a>
+                                    <a class="text-warning"><i class="mdi mdi-star"></i></a>
+                                    <a class="text-warning"><i class="mdi mdi-star"></i></a>
+                                    <a class="text-warning"><i class="mdi mdi-star"></i></a>
+                                </div>
+                                <h1 class="pro-price mb-0 mt-20">
+                                    <span>
+                                        @ViewBag.tien VNĐ
+                                    </span>
+                                    @{
+                                        if (ViewBag.giam != "")
+                                        {
+                                            <span class="old-price">@Model.giaBan VNĐ</span>
+                                            <span class="text-danger">@ViewBag.giam off</span>
+                                        }
+                                    }
+
+                                </h1>
+                                <hr>
+                                <p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. but the majority have suffered alteration in some form, by injected humour</p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h6>Color</h6>
+                                        <div class="input-group">
+                                            <ul class="icolors">
+                                                <li class="bg-danger rounded-circle"></li>
+                                                <li class="bg-info rounded-circle"></li>
+                                                <li class="bg-primary rounded-circle active"></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="gap-items">
+                                    <button class="btn btn-success btnedit"  data-id="@Model.maSP" data-toggle="modal" data-target="#edit1"><i class="mdi mdi-table-edit"></i>Sửa</button>
+                                    <button class="btn btn-danger btndelete" data-id="@Model.maSP" data-toggle="modal" data-target="#modal-center"><i class="mdi mdi-delete"></i>Xóa</button>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="box-title mt-40">General Info</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td width="390">Brand</td>
+                                                <td> Brand Name </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Delivery Condition</td>
+                                                <td> Lorem Ipsum </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Type</td>
+                                                <td> Party Wear </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Style</td>
+                                                <td> Modern </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Product Number</td>
+                                                <td> FG1548952 </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" id="edit1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Sửa Sản Phẩm</h4>
+                <button type="button" class="close btnclose1" aria-hidden="true" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label class="font-weight-700 font-size-16">Mã Sản Phẩm</label>
+                                    <input type="text" id="maSP1" class="form-control" placeholder="Mã Sản Phẩm">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-700 font-size-16">Tên Sản Phẩm</label>
+                                    <input type="text" id="tenSP1" class="form-control" placeholder="Tên Sản Phẩm">
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-700 font-size-16">Mã Giảm</label>
+                                    <select class="form-control" id="maGiam1" data-placeholder="Choose a Category" tabindex="1">
+                                        <option value="6">0%</option>
+                                        <option value="1">10%</option>
+                                        <option value="2">20%</option>
+                                        <option value="3">30%</option>
+                                        <option value="4">40%</option>
+                                        <option value="5">50%</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-700 font-size-16">Price</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="ti-money"></i></div>
+                                        <input type="text" class="form-control" id="giaBan1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <!--/row-->
+                        <div class="row">
+                            <!--/span-->
+                            <div class="col-md-3">
+                                <div class="product-img text-left">
+                                    <img src="" id="xemAnh" alt="">
+                                    <div class="btn btn-info mb-20">
+                                        <input type="file" class="upload" id="hinhAnh1" style="color: transparent;">
+                                        <span id="tenAnh"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>							<!-- /.box-body -->
+
+                </form>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class=" btn btn-secondary btn btn-rounded btn-warning btn-outline mr-1 btnthoat" data-dismiss="modal"><i class="ti-trash"></i> Thoát </button>
+                <button type="button" style="background-color:blue" class="btn btn-rounded btn-primary btn-outline btn btn-primary float-right btnmua" id="sua1"><i class="ti-save-alt"></i>Lưu  </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal center-modal fade" id="modal-center" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa sản Phẩm</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ma1" />
+                <p>Bạn có muốn xóa Đơn hàng này không ?</p>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không </button>
+                <button type="button" class="btn btn-primary float-right" data-dismiss="modal" id="xoa1">Có</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+
+}
+@section script{
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- <script src="~/Scripts/jquery-3.7.0.slim.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.slim.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.btnthoat').on('click', function () {
+                $('#hinhAnh1').val('');
+                $('#hinhAnh').val('');
+            })
+            $('.btnclose1').on('click', function () {
+                $('#hinhAnh1').val('');
+                $('#hinhAnh').val('');
+            })
+            $('#hinhAnh1').change(function () {
+                var hinhAnh = $('#hinhAnh1').prop('files')[0].name;
+                $('#xemAnh').attr('src', '/images/product/' + hinhAnh);
+                $('#tenAnh').text(hinhAnh);
+
+            });
+            $('body').on('click', '.btndelete', function () {
+                var maDon = $(this).data('id');
+                $('#ma1').val(maDon);
+            })
+            $('#xoa1').on('click', function () {
+                var maSP = $('#ma1').val();
+                $.ajax({
+                    url: "/QLsanPham/XoaSP",
+                    type: "GET",
+                    data: { maSP: maSP },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: ' Xóa Sản Phẩm  ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 6,
+                                afterHidden: function () {
+                                    window.location.href = "/Admin/QLsanPham/Index";
+                                },
+                            });
+                            $('#modal-center').modal('hide');
+
+                        }
+
+                    }
+                })
+            })
+            $('body').on('click', '.btnedit', function () {
+                var maSP = $(this).data('id');
+                $.ajax({
+                    url: "/QLsanPham/getID",
+                    type: "GET",
+                    data: { maSP: maSP },
+                    success: function (res) {
+                        if (res.success) {
+                            var hinhAnh = res.data.hinhAnh;
+                            $('#xemAnh').attr('src', '/images/product/' + hinhAnh);
+                            $('#maSP1').val(res.data.maSP);
+                            $('#tenSP1').val(res.data.tenSP);
+                            $('#maGiam1').val(res.data.maGiam);
+                            $('#giaBan1').val(res.data.giaBan);
+                            $('#tenAnh').text(res.data.hinhAnh);
+                            $('#edit').modal('show');
+                        }
+                    }
+                })
+
+            })
+            $('#sua1').on('click', function () {
+                var maSP = $('#maSP1').val();
+                var tenSP = $('#tenSP1').val();
+                var giaBan = $('#giaBan1').val();
+                var maGiam = $('#maGiam1').val();
+                var check = $('#hinhAnh1').val();
+                if (check != '') {
+                    var hinhAnh = $('#hinhAnh1').prop('files')[0].name;
+                    $.ajax({
+                        url: "/QLsanPham/suaSP",
+                        type: "POST",
+                        data: { maSP: maSP, tenSP: tenSP, giaBan: giaBan, maGiam: maGiam, hinhAnh: hinhAnh, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                        success: function (res) {
+                            if (res.success) {
+                                $.toast({
+                                    heading: 'Thành Công  ',
+                                    text: ' Sửa Sản Phẩm  ',
+                                    position: 'top-right',
+                                    loaderBg: '#ff6849',
+                                    icon: 'success',
+                                    hideAfter: 50,
+                                    stack: 6,
+                                    afterHidden: function () {
+                                        window.location.reload();
+                                    },
+                                });
+                                $('#edit1').modal('hide');
+                            }
+                        }
+                    })
+                }
+                else {
+                    var hinhAnh = $('#tenAnh').text();
+                    $.ajax({
+                        url: "/QLsanPham/suaSP",
+                        type: "POST",
+                        data: { maSP: maSP, tenSP: tenSP, giaBan: giaBan, maGiam: maGiam, hinhAnh: hinhAnh, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                        success: function (res) {
+                            if (res.success) {
+                                $.toast({
+                                    heading: 'Thành Công  ',
+                                    text: ' Sửa Sản Phẩm  ',
+                                    position: 'top-right',
+                                    loaderBg: '#ff6849',
+                                    icon: 'success',
+                                    hideAfter: 50,
+                                    stack: 6,
+                                    afterHidden: function () {
+                                        window.location.reload();
+                                    },
+                                });
+                                $('#edit1').modal('hide');
+                            }
+                        }
+                    })
+                }
+            })
+
+        })
+    </script>
+}
+

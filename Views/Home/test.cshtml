@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ado.Models.products>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.maSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.giaBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhAnh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maGiam)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.giaBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhAnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maGiam)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

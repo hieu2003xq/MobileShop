@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container-full">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="page-title">Họ Tên: </h3>
+                <div class="d-inline-block align-items-center">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                            <li class="breadcrumb-item" aria-current="page">Điểm tích lũy: </li>
+                            <li class="breadcrumb-item active" aria-current="page">Đơn hàng</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table id="tb1" class="table table-hover no-wrap product-order" data-page-size="10">
+                                <thead>
+                                    <tr>
+                                        <th>STT </th>
+                                        <th>Mã Đơn </th>
+                                        <th>Tên Khách Hàng</th>
+                                        <th>Tên Nhân Viên</th>
+                                        <th>Hình Ảnh </th>
+                                        <th>Tên Sản Phẩm</th>
+                                        
+                                        <th>Ngày Đặt</th>
+                                        <th>Đơn giá</th>
+
+                                        <th>Trạng Thái TT</th>
+                                        <th>Trạng Thái GH</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+        <div class="modal center-modal fade" id="modal-center" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xóa sản Phẩm</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="ma1" />
+                        <p>Bạn có muốn xóa Đơn hàng này không ?</p>
+                    </div>
+                    <div class="modal-footer modal-footer-uniform">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không </button>
+                        <button type="button" class="btn btn-primary float-right" data-dismiss="modal" id="xoa1">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="edit" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="width:1000px">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Sửa Đơn</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="box-body">
+                                @Html.AntiForgeryToken()
+                                <table class="table table-bordered" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>STT </th>
+                                            <th>Mã Đơn </th>
+                                            <th>Tên Khách Hàng</th>
+                                            <th>Tên Nhân Viên</th>
+                                            <th>Hình Ảnh </th>
+                                            <th>Tên Sản Phẩm</th>
+
+                                            <th>Ngày Đặt</th>
+                                            <th>Đơn giá</th>
+
+                                            <th>Trạng Thái TT</th>
+                                            <th>Trạng Thái GH</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="donSua1">
+                                    </tbody>
+                                </table>
+                                <div class="form-group">
+                                    <label>Tính trạng GH</label>
+                                    <select class="form-control" id="ttgh">
+                                        <option value="2">Đã giao</option>
+                                        <option value="1">Đang giao</option>
+                                    </select>
+                                </div>
+                            </div>							<!-- /.box-body -->
+
+                        </form>
+                    </div>
+                    <div class="modal-footer modal-footer-uniform">
+                        <button type="button" class=" btn btn-secondary btn btn-rounded btn-warning btn-outline mr-1" data-dismiss="modal"><i class="ti-trash"></i> Thoát </button>
+                        <button type="button" style="background-color:blue" class="btn btn-rounded btn-primary btn-outline btn btn-primary float-right btnmua" id="sua1"><i class="ti-save-alt"></i>Lưu </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </section>
+
+    <!-- /.content -->
+</div>
+@section css{
+    <link href="~/assets/vendor_components/datatable/datatables.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+}
+@section script{
+    <script src="~/assets/vendor_components/datatable/datatables.min.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            load();
+            $('body').on('click', '.btndelete', function () {
+                var maDon = $(this).data('id');
+                $('#ma1').val(maDon);
+            })
+            $('body').on('click', '.btnedit', function () {
+                var STT = $(this).data('id');
+                if (STT != null) {
+                    getID(STT);
+                } else {
+                    alert("loi");
+                }
+            })
+            $("#xoa1").on("click", function () {
+                var maDon = $('#ma1').val();
+                $.ajax({
+                    url: "/Admin/QLdonHang/xoaDon",
+                    type: "POST",
+                    data: { maDon: maDon },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: ' Xóa Đơn hàng  ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 6,
+                                afterShown: function () { load(); },
+                            });
+                            $('#modal-center').modal('hide');
+                        }
+
+                    }
+                })
+            })
+            $('#sua1').on('click', function () {
+                var maDon = $('#maDon1').text();
+                var tinhtrangGH = $('#ttgh').val();
+                $.ajax({
+                    url: "/Admin/QLdonHang/suaDon",
+                    type: "POST",
+                    data: { maDon: maDon, tinhtrangGH: tinhtrangGH },
+                    success: function (res) {
+                        if (res.success) {
+                            $.toast({
+                                heading: 'Thành Công  ',
+                                text: 'Sửa thành công ',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'success',
+                                hideAfter: 1500,
+                                stack: 1,
+                                afterShown: function () { $('#edit').modal('hide'); load() },
+
+                            });
+                        }
+                    }
+                })
+            })
+            $('body').on('click','.donDangGiao', function () {
+                window.location.href = "/Admin/QLdonHang/hienThiDonDG";
+            })
+            $('body').on('click', '.donDaGiao', function () {
+                window.location.href = "/Admin/QLdonHang/hienThiDonDaGiao";
+            })
+        })
+        function load() {
+            if ($.fn.DataTable.isDataTable('#tb1')) {
+                $('#tb1').DataTable().destroy();
+
+            }
+            $('#tb1').DataTable({
+                "processing": "true",
+                "serverSide": "true",
+
+                'lengthChange': true,
+
+                'ordering': true,
+                'info': true,
+                'autoWidth': false,
+                "paging": "false",
+                "searching": "false",
+                "ajax": {
+                    "url": "/QLdonHang/layDsDon",
+                    "type": "POST",
+                    "datatype": "json",
+                },
+                "columns": [
+                    {
+                        "data": "tenKH",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.STT + "</td>"
+                        }
+                    },
+                    {
+                        "data": "maDon",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.maDon + "</td>"
+                        }
+                    },
+                    {
+                        "data": "hinhAnh",
+                        "render": function (data, type, row, meta) {
+                            return " <td><img src='/images/product/" + row.hinhAnh + "' width='80'></td>"
+                        }
+                    },
+                    {
+                        "data": "tenSP",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.tenSP + "</td>"
+                        }
+                    },
+
+                   
+                    {
+                        "data": "ngayDat",
+                        "render": function (data, type, row, meta) {
+                            var date = moment(row.ngayDat).format(' DD/MM/YYYY HH:mm:ss');;
+                            return "<td>" + date + "</td>"
+                        }
+
+                    },
+                    {
+                        "data": "giaBan",
+                        "render": function (data, type, row, meta) {
+                            return "<td>" + row.giaBan.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</td>"
+                        }
+
+                    },
+                   
+                    {
+                        "data": "tinhTrangTT",
+                        "render": function (data, type, row, meta) {
+                            if (row.tinhTrangTT == "Trả Sau") {
+                                return " <td><span class='badge badge-pill badge-warning'>" + row.tinhTrangTT + "</span></td>"
+
+                            }
+                            else {
+                                return " <td><span class='badge badge-pill badge-success'>" + row.tinhTrangTT + "</span></td>"
+                            }
+                        }
+
+                    },
+                    {
+                        "data": "tinhTrangGH",
+                        "render": function (data, type, row, meta) {
+                            if (row.tinhTrangGH =="Đang giao") {
+                                return " <td><span class='badge badge-pill badge-warning' ><a href='#' style='color:white' class='donDangGiao'>" + row.tinhTrangGH + "</a></span></td>"
+                            }
+                            else {
+                                return "<td><span class='badge badge-pill badge-success'><a href='#' style='color:white' class='donDaGiao'>" + row.tinhTrangGH + "</a></span></td>"
+                            }
+                        }
+
+                    },
+                    {
+                        "data": "tinhTrangGH",
+                        "render": function (data, type, row, meta) {
+                            if (row.tinhTrangGH == "Đang giao") {
+                                return "<td><a href='#' class='text-info mr-10 btnedit'  data-id='" + row.maDon + "' data-toggle='modal' data-target='#edit'><i class='ti-marker-alt'></i></a> <a href='#' class='text-danger btndelete' data-id='" + row.maDon + "' data-toggle='modal' data-target='#modal-center'><i class='ti-trash'></i></a></td>";
+                            }
+                           else {
+                               return "<td><a href='#' class='text-danger btndelete' data-id='" + row.maDon + "' data-toggle='modal' data-target='#modal-center'><i class='ti-trash'></i></a></td>";
+                           }
+
+                        }
+                    }
+
+                ],
+                "language": {
+                    "emptyTable": "không có dữ liệu",
+                    "sLengthMenu": "Số Bản ghi hiển thị trên 1 trang _MENU_",
+                    "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
+                    "sSearch": "Tìm kiếm",
+                    "oPaginate": {
+                        "sFirst": "Đầu",
+                        "sPrevious": "Trước",
+                        "sNext": "Tiếp",
+                        "sLast": "Cuối",
+                    },
+                    "bAutoWidth": "false",
+                }
+
+            });
+        }
+        function getID(maDon) {
+            $.ajax({
+                url: "/sanPham/docDon",
+                type: "POST",
+                data: { maDon: maDon, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                success: function (res) {
+                    if (res.success) {
+                        var items = res.data;           
+                        var html2 = "";
+                        for (let i = 0; i < items.length; i++) {
+                            html2 += "<tr>";
+                            html2 += "<td>" + items[i].STT + "</td>"
+                            html2 += "<td><span id='maDon1'>"+ items[i].maDon+"</span></td>"
+                            html2 += "<td><img src='/images/product/"+items[i].hinhAnh+"' alt='' width='80'></td>";
+                            html2 += "<td><h5>" + items[i].tenSP + "</h5></td>";
+                            html2 += "<td>" + items[i].soLuong + "</td>";
+                            html2 += "<td>" + moment(items[i].ngayDat).format(' DD/MM/YYYY HH:mm:ss'); + "</td>";
+                            html2 += "<td>" + (items[i].giaBan * 1000).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) +"</td>";
+                            html2 += "<td style='color:red'>-" + items[i].giamGia + "</td>";
+                            html2 += "<td>" + (items[i].tienTra * 1000).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) + "</td>";
+                            if (items[i].tinhTrangTT == "Trả Sau") {
+                                html2 += "<td><span class='badge badge-pill badge-warning'>" + items[i].tinhTrangTT + "</span></td>";
+                            }
+                            else {
+                                html2 += "<td><span class='badge badge-pill badge-success'>" + items[i].tinhTrangTT + "</span></td>";
+                            }
+                            if (items[i].tinhTrangGH == "Đang giao") {
+                                html2 += "<td><span class='badge badge-pill badge-warning'>" + items[i].tinhTrangGH + "</span></td>";
+                            }
+                            else {
+                                html2 += "<td><span class='badge badge-pill badge-success'>" + items[i].tinhTrangGH + "</span></td>";
+                            }
+                            html2 += "</tr>";
+                        }
+                        $('#donSua1').html(html2);
+                        $('#edit').modal('show');
+                    }
+                    else {
+                        alert('loi');
+                    }
+                }
+
+            })
+        }
+    </script>
+    }
+

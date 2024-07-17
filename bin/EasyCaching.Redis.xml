@@ -1,0 +1,556 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyCaching.Redis</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Extensions.DependencyInjection.EasyCachingOptionsExtensions">
+            <summary>
+            EasyCaching options extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EasyCachingOptionsExtensions.UseRedis(EasyCaching.Core.Configurations.EasyCachingOptions,System.Action{EasyCaching.Redis.RedisOptions},System.String)">
+            <summary>
+            Uses the SERedis provider (specify the config via hard code).
+            </summary>
+            <param name="options">Options.</param>
+            <param name="configure">Configure provider settings.</param>
+            <param name="name">The name of this provider instance.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EasyCachingOptionsExtensions.UseRedis(EasyCaching.Core.Configurations.EasyCachingOptions,Microsoft.Extensions.Configuration.IConfiguration,System.String,System.String)">
+            <summary>
+            Uses the SERedis provider (read config from configuration file).
+            </summary>
+            <param name="options">Options.</param>
+            <param name="configuration">The configuration.</param>
+            <param name="name">The name of this provider instance.</param>
+            <param name="sectionName">The section name in the configuration file.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EasyCachingOptionsExtensions.UseRedisLock(EasyCaching.Core.Configurations.EasyCachingOptions)">
+            <summary>
+            Uses the SERedis lock.
+            </summary>
+            <param name="options">Options.</param>
+        </member>
+        <member name="T:EasyCaching.Redis.IRedisDatabaseProvider">
+            <summary>
+            Redis database provider.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.IRedisDatabaseProvider.GetDatabase">
+            <summary>
+            Gets the database.
+            </summary>
+            <returns>The database.</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.IRedisDatabaseProvider.GetServerList">
+            <summary>
+            Gets the server list.
+            </summary>
+            <returns>The server list.</returns>
+        </member>
+        <member name="T:EasyCaching.Redis.RedisDatabaseProvider">
+            <summary>
+            Redis database provider.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.RedisDatabaseProvider._options">
+            <summary>
+            The options.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.RedisDatabaseProvider._connectionMultiplexer">
+            <summary>
+            The connection multiplexer.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.RedisDatabaseProvider.GetDatabase">
+            <summary>
+            Gets the database connection.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.RedisDatabaseProvider.GetServerList">
+            <summary>
+            Gets the server list.
+            </summary>
+            <returns>The server list.</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.RedisDatabaseProvider.CreateConnectionMultiplexer">
+            <summary>
+            Creates the connection multiplexer.
+            </summary>
+            <returns>The connection multiplexer.</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.RedisDatabaseProvider.GetMastersServersEndpoints">
+            <summary>
+            Gets the masters servers endpoints.
+            </summary>
+        </member>
+        <member name="T:EasyCaching.Redis.RedisDBOptions">
+            <summary>
+            Redis cache options.
+            </summary>
+        </member>
+        <member name="P:EasyCaching.Redis.RedisDBOptions.Database">
+            <summary>
+            Gets or sets the Redis database index the cache will use.
+            </summary>
+            <value>
+            The database.
+            </value>
+        </member>
+        <member name="P:EasyCaching.Redis.RedisDBOptions.AsyncTimeout">
+            <summary>
+            Specifies the time in milliseconds that the system should allow for asynchronous operations (defaults to SyncTimeout)
+            </summary>
+        </member>
+        <member name="P:EasyCaching.Redis.RedisDBOptions.SyncTimeout">
+            <summary>
+            Specifies the time in milliseconds that the system should allow for synchronous operations (defaults to 5 seconds)
+            </summary>
+        </member>
+        <member name="P:EasyCaching.Redis.RedisDBOptions.KeyPrefix">
+            <summary>
+            Gets or sets the Redis database KeyPrefix will use.
+            </summary>
+        </member>
+        <member name="P:EasyCaching.Redis.RedisDBOptions.ConfigurationOptions">
+            <summary>
+            Gets or sets the Redis database ConfigurationOptions will use.
+            </summary>
+        </member>
+        <member name="T:EasyCaching.Redis.RedisOptionsExtension">
+            <summary>
+            Redis options extension.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.RedisOptionsExtension._name">
+            <summary>
+            The name.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.RedisOptionsExtension.configure">
+            <summary>
+            The configure.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.RedisOptionsExtension.#ctor(System.String,System.Action{EasyCaching.Redis.RedisOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyCaching.Redis.RedisOptionsExtension"/> class.
+            </summary>
+            <param name="name">Name.</param>
+            <param name="configure">Configure.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.RedisOptionsExtension.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the services.
+            </summary>
+            <param name="services">Services.</param>
+        </member>
+        <member name="T:EasyCaching.Redis.DefaultRedisCachingProvider">
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+            <summary>
+            Default redis caching provider.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAsync(System.String,System.Type,System.Threading.CancellationToken)">
+            <summary>
+            Gets the specified cacheKey async.
+            </summary>
+            <returns>The async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="type">Object Type.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}},System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Gets the specified cacheKey, dataRetriever and expiration async.
+            </summary>
+            <returns>The async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="dataRetriever">Data retriever.</param>
+            <param name="expiration">Expiration.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the specified cacheKey async.
+            </summary>
+            <returns>The async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetCountAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the count.
+            </summary>
+            <returns>The count.</returns>
+            <param name="prefix">Prefix.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes the specified cacheKey async.
+            </summary>
+            <returns>The async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseSetAsync``1(System.String,``0,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Sets the specified cacheKey, cacheValue and expiration async.
+            </summary>
+            <returns>The async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cacheValue">Cache value.</param>
+            <param name="expiration">Expiration.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseExistsAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Existses the specified cacheKey async.
+            </summary>
+            <returns>The async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveByPrefixAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes cached item by cachekey's prefix async.
+            </summary>
+            <param name="prefix">Prefix of CacheKey.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveByPatternAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes cached item by pattern async.
+            </summary>
+            <param name="pattern">Pattern of CacheKey.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseSetAllAsync``1(System.Collections.Generic.IDictionary{System.String,``0},System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Sets all async.
+            </summary>
+            <returns>The all async.</returns>
+            <param name="values">Values.</param>
+            <param name="expiration">Expiration.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAllAsync``1(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Gets all async.
+            </summary>
+            <returns>The all async.</returns>
+            <param name="cacheKeys">Cache keys.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAllKeysByPrefixAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets all keys async by prefix.
+            </summary>
+            <param name="prefix">Prefix</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <returns>The all keys by prefix async.</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetByPrefixAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the by prefix async.
+            </summary>
+            <returns>The by prefix async.</returns>
+            <param name="prefix">Prefix.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveAllAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Removes all async.
+            </summary>
+            <returns>The all async.</returns>
+            <param name="cacheKeys">Cache keys.</param>
+            <param name="cancellationToken">CancellationToken</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseFlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Flush All Cached Item async.
+            </summary>
+            <returns>The async.</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseTrySetAsync``1(System.String,``0,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Tries the set async.
+            </summary>
+            <returns>The set async.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cacheValue">Cache value.</param>
+            <param name="expiration">Expiration.</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetExpirationAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the expiration of cache key
+            </summary>
+            <param name="cacheKey">cache key</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <returns>expiration</returns>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._cache">
+            <summary>
+            The cache.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._servers">
+            <summary>
+            The servers.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._dbProvider">
+            <summary>
+            The db provider.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._serializer">
+            <summary>
+            The serializer.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._options">
+            <summary>
+            The options.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._cacheStats">
+            <summary>
+            The cache stats.
+            </summary>
+        </member>
+        <member name="F:EasyCaching.Redis.DefaultRedisCachingProvider._name">
+            <summary>
+            The name.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.#ctor(System.String,System.Collections.Generic.IEnumerable{EasyCaching.Redis.IRedisDatabaseProvider},System.Collections.Generic.IEnumerable{EasyCaching.Core.Serialization.IEasyCachingSerializer},EasyCaching.Redis.RedisOptions,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyCaching.Redis.DefaultRedisCachingProvider"/> class.
+            </summary>
+            <param name="name">Name.</param>
+            <param name="dbProviders">Db providers.</param>
+            <param name="serializers">Serializers.</param>
+            <param name="options">Options.</param>
+            <param name="loggerFactory">Logger factory.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.#ctor(System.String,System.Collections.Generic.IEnumerable{EasyCaching.Redis.IRedisDatabaseProvider},System.Collections.Generic.IEnumerable{EasyCaching.Core.Serialization.IEasyCachingSerializer},EasyCaching.Redis.RedisOptions,EasyCaching.Redis.DistributedLock.RedisLockFactory,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyCaching.Redis.DefaultRedisCachingProvider"/> class.
+            </summary>
+            <param name="name">Name.</param>
+            <param name="dbProviders">Db providers.</param>
+            <param name="serializers">Serializers.</param>
+            <param name="options">Options.</param>
+            <param name="factory">Distributed lock factory</param>
+            <param name="loggerFactory">Logger factory.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGet``1(System.String,System.Func{``0},System.TimeSpan)">
+            <summary>
+            Get the specified cacheKey, dataRetriever and expiration.
+            </summary>
+            <returns>The get.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="dataRetriever">Data retriever.</param>
+            <param name="expiration">Expiration.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGet``1(System.String)">
+            <summary>
+            Get the specified cacheKey.
+            </summary>
+            <returns>The get.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemove(System.String)">
+            <summary>
+            Remove the specified cacheKey.
+            </summary>
+            <returns>The remove.</returns>
+            <param name="cacheKey">Cache key.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseSet``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            Set the specified cacheKey, cacheValue and expiration.
+            </summary>
+            <returns>The set.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cacheValue">Cache value.</param>
+            <param name="expiration">Expiration.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseExists(System.String)">
+            <summary>
+            Exists the specified cacheKey.
+            </summary>
+            <returns>The exists.</returns>
+            <param name="cacheKey">Cache key.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveByPrefix(System.String)">
+            <summary>
+            Removes cached item by cachekey's prefix.
+            </summary>
+            <param name="prefix">Prefix of CacheKey.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveByPattern(System.String)">
+            <summary>
+            Removes cached item by pattern async.
+            </summary>
+            <param name="pattern">Pattern of CacheKey.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.SearchRedisKeys(System.String)">
+            <summary>
+            Searchs the redis keys.
+            </summary>
+            <returns>The redis keys.</returns>
+            <remarks>
+            If your Redis Servers support command SCAN ,
+            IServer.Keys will use command SCAN to find out the keys.
+            Following
+            https://github.com/StackExchange/StackExchange.Redis/blob/master/StackExchange.Redis/StackExchange/Redis/RedisServer.cs#L289
+            </remarks>
+            <param name="pattern">Pattern.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.GetAllRedisKeys(System.String)">
+            <summary>
+            GetAll the redis keys.
+            </summary>
+            <returns>The redis keys.</returns>
+            <remarks>
+            If your Redis Servers support command SCAN ,
+            IServer.Keys will use command SCAN to find out the keys.
+            Following
+            https://github.com/StackExchange/StackExchange.Redis/blob/master/StackExchange.Redis/StackExchange/Redis/RedisServer.cs#L289
+            </remarks>
+            <param name="pattern">Pattern.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.HandlePrefix(System.String)">
+            <summary>
+            Handles the prefix of CacheKey.
+            </summary>
+            <param name="prefix">Prefix of CacheKey.</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.HandleKeyPattern(System.String)">
+            <summary>
+            Handles the pattern of CacheKey.
+            </summary>
+            <param name="pattern">Pattern of CacheKey.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseSetAll``1(System.Collections.Generic.IDictionary{System.String,``0},System.TimeSpan)">
+            <summary>
+            Sets all.
+            </summary>
+            <param name="values">Values.</param>
+            <param name="expiration">Expiration.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAll``1(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets all.
+            </summary>
+            <returns>The all.</returns>
+            <param name="cacheKeys">Cache keys.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetAllKeysByPrefix(System.String)">
+            <summary>
+            Gets all keys by prefix.
+            </summary>
+            <param name="prefix">Prefix</param>
+            <returns>The all keys by prefix.</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetByPrefix``1(System.String)">
+            <summary>
+            Gets the by prefix.
+            </summary>
+            <returns>The by prefix.</returns>
+            <param name="prefix">Prefix.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseRemoveAll(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Removes all.
+            </summary>
+            <param name="cacheKeys">Cache keys.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetCount(System.String)">
+            <summary>
+            Gets the count.
+            </summary>
+            <returns>The count.</returns>
+            <param name="prefix">Prefix.</param>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseFlush">
+            <summary>
+            Flush All Cached Item.
+            </summary>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseTrySet``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            Tries the set.
+            </summary>
+            <returns><c>true</c>, if set was tryed, <c>false</c> otherwise.</returns>
+            <param name="cacheKey">Cache key.</param>
+            <param name="cacheValue">Cache value.</param>
+            <param name="expiration">Expiration.</param>
+            <typeparam name="T">The 1st type parameter.</typeparam>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetExpiration(System.String)">
+            <summary>
+            Get the expiration of cache key
+            </summary>
+            <param name="cacheKey">cache key</param>
+            <returns>expiration</returns>
+        </member>
+        <member name="M:EasyCaching.Redis.DefaultRedisCachingProvider.BaseGetProviderInfo">
+            <summary>
+            Get te information of this provider.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

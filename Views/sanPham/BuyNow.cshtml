@@ -1,0 +1,455 @@
+﻿
+@{
+    ViewBag.Title = "checkOut";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shopping Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Search Products</h2>
+                    <form action="">
+                        <input type="text" placeholder="Search products...">
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Products</h2>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$100.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$100.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$100.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$100.00</del>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Recent Posts</h2>
+                    <ul>
+                        <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
+                        <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
+                        <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
+                        <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
+                        <li><a href="single-product.html">Sony Smart TV - 2015</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Hình Ảnh</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Số Lượng</th>
+                                <th class="w-200">Giá Bán </th>
+                            </tr>
+                        </thead>
+                        <tbody id="donMua1">
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+                <h3>Thông tin khách hàng</h3>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label>Họ tên khách hàng</label>
+                    <input type="text" id="tenKH" name="CustomerName" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" id="SDT" name="Phone" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="diaChi" name="Address" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label>Hình thức thanh toán</label>
+                    <select class="form-control" name="TypePayment" id="type1">
+                        <option value="1" selected>Trả Sau</option>
+                        <option value="2">Chuyển khoản</option>
+                    </select>
+                </div>
+                <div class="form-group" id="load_payment" style="display:none;">
+                    <h5>Chọn phương thức thanh toán<span class="text-danger">*</span></h5>
+                    <fieldset class="controls">
+                        <input name="group1" type="radio" id="radio_0" value="0" required>
+                        <label for="radio_0">Chuyển hướng sang VNPAY</label>
+                    </fieldset>
+                    <fieldset>
+                        <input name="group1" type="radio" id="radio_1" value="1">
+                        <label for="radio_1">Thanh toán qua ứng dụng hỗ trợ VNPAYOR</label>
+                    </fieldset>
+                    <fieldset>
+                        <input name="group1" type="radio" id="radio_2" value="2">
+                        <label for="radio_2">ATM tài khoản nội địa</label>
+                    </fieldset>
+                    <fieldset>
+                        <input name="group1" type="radio" id="radio_3" value="3">
+                        <label for="radio_3">Thanh toán qua thẻ quốc tế</label>
+                    </fieldset>
+                </div>
+                <div class="form-group" id="load_send"></div>
+                <div class="form-group">
+                    <button type="submit" id="datHang" class="btn btn-block btn-success">Đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer-top-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-about-us">
+                    <h2>u<span>Stora</span></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <ul>
+                        <li><a href="">My account</a></li>
+                        <li><a href="">Order history</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Vendor contact</a></li>
+                        <li><a href="">Front page</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-menu">
+                    <h2 class="footer-wid-title">Categories</h2>
+                    <ul>
+                        <li><a href="">Mobile Phone</a></li>
+                        <li><a href="">Home accesseries</a></li>
+                        <li><a href="">LED TV</a></li>
+                        <li><a href="">Computer</a></li>
+                        <li><a href="">Gadets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Type your email">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="copyright">
+                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-paypal"></i>
+                    <i class="fa fa-cc-visa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Thông tin khách hàng</h3>
+@Html.AntiForgeryToken()
+<div class="form-group">
+    <label>Họ tên khách hàng</label>
+    <input type="text" id="tenKH" name="CustomerName" required class="form-control" autocomplete="off" />
+</div>
+<div class="form-group">
+    <label>Số điện thoại</label>
+    <input type="text" id="SDT" name="Phone" class="form-control" autocomplete="off" />
+</div>
+<div class="form-group">
+    <label>Địa chỉ</label>
+    <input type="text" id="diaChi" name="Address" class="form-control" autocomplete="off" />
+</div>
+<div class="form-group">
+    <label>Hình thức thanh toán</label>
+    <select class="form-control" name="TypePayment" id="type1">
+        <option value="1" selected>Trả Sau</option>
+        <option value="2">Chuyển khoản</option>
+    </select>
+</div>
+<div class="form-group" id="load_payment" style="display:none;">
+    <h5>Chọn phương thức thanh toán<span class="text-danger">*</span></h5>
+    <fieldset class="controls">
+        <input name="group1" type="radio" id="radio_0" value="0" required>
+        <label for="radio_0">Chuyển hướng sang VNPAY</label>
+    </fieldset>
+    <fieldset>
+        <input name="group1" type="radio" id="radio_1" value="1">
+        <label for="radio_1">Thanh toán qua ứng dụng hỗ trợ VNPAYOR</label>
+    </fieldset>
+    <fieldset>
+        <input name="group1" type="radio" id="radio_2" value="2">
+        <label for="radio_2">ATM tài khoản nội địa</label>
+    </fieldset>
+    <fieldset>
+        <input name="group1" type="radio" id="radio_3" value="3">
+        <label for="radio_3">Thanh toán qua thẻ quốc tế</label>
+    </fieldset>
+</div>
+<div class="form-group" id="load_send"></div>
+<div class="form-group">
+    <button type="submit" id="datHang" class="btn btn-block btn-success">Đặt hàng</button>
+</div>
+@section css{
+
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+
+}
+@section script{
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- <script src="~/Scripts/jquery-3.7.0.slim.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.slim.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            load();
+            $('body').on('change', '#type1', function () {
+                var type = $(this).val();
+                if (type == 1) {
+                    $('#load_payment').hide();
+                }
+                if (type == 2) {
+                    $('#load_payment').show();
+                }
+            })
+            $('body').on('click', '#datHang', function () {
+                var type = $('#type1').val();
+                if (type == 1) {
+
+                    var tableData = [];
+                    var tenKH = $('#tenKH').val();
+                    var diaChi = $('#diaChi').val();
+                    var sdt = $('#SDT').val();
+                    var giamGia1 = $('#giamgia1').text();
+                    var tienTra1 = $('#tienTra2').text();
+                    var ktraSDT = /^[0-9]{10}$/;
+
+                    if (giamGia1 == 'Không có mã giảm') {
+                        giamGia1 = "0%";
+                    }
+                    if (ktraSDT.test(sdt) == false) {
+                        $('.errorphone').text("SDT không đúng định dạng");
+                    }
+                    if (tenKH == "" || diaChi == "" || sdt == "") {
+                        $.toast({
+                            heading: 'Thông tin nhập chưa đủ',
+                            text: 'Cần nhập đầy đủ thông tin',
+                            position: 'top-right',
+                            loaderBg: '#ff6849',
+                            icon: 'warning',
+                            hideAfter: 3500,
+                            stack: 6,
+
+                        });
+
+                    }
+                    else {
+                        if ($('#donMua1').html() == "Chưa có thông tin") {
+                            $.toast({
+                                heading: 'Đơn Chưa có sản phẩm',
+                                text: 'Vào Shop để chọn sản phẩm phù hợp',
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                icon: 'warning',
+                                hideAfter: 3500,
+                                stack: 6,
+
+                            });
+                        }
+
+                        else {
+                            $("#donMua1 tr").each(function () {
+                                var rowData = {
+                                    maSP: $(this).find(".btnma").data('id'),
+                                    soLuong: $(this).find(".btnSL").data('id'),
+
+                                };
+                                tableData.push(rowData);
+                            });
+                            $.ajax({
+                                url: '/sanPham/datHang',
+                                type: 'POST',
+                                data: { lst: tableData, tenKH: tenKH, diaChi: diaChi, giamGia: giamGia1, tienTra: tienTra1, SDT: sdt, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                                success: function (res) {
+                                    if (res.success) {
+                                        $.toast({
+                                            heading: 'Thành Công  ',
+                                            text: 'Mua Hàng ',
+                                            position: 'top-right',
+                                            loaderBg: '#ff6849',
+                                            icon: 'success',
+                                            hideAfter: 1500,
+                                            stack: 1,
+
+                                        });
+                                        reset();
+                                    }
+
+                                }
+                            })
+                        }
+                    }
+
+                }
+                if (type == 2) {
+                    var Data = [];
+                    var kieuTT = $('input[name="group1"]:checked').val();
+                    var tenKH = $('#tenKH').val();
+                    var diaChi = $('#diaChi').val();
+                    var sdt = $('#SDT').val();
+                    var giamGia2 = $('#giamgia1').text();
+                    var tienTra2 = $('#tienTra2').text();
+                    if (giamGia2 == 'Không có mã giảm') {
+                        giamGia2 = "0%";
+                    }
+                    $("#donMua1 tr").each(function () {
+                        var rowData = {
+                            maSP: $(this).find(".btnma").data('id'),
+                            soLuong: $(this).find(".btnSL").data('id'),
+
+                        };
+                        Data.push(rowData);
+                    });
+                    $.ajax({
+                        url: '/sanPham/thanhToanDon',
+                        type: 'POST',
+                        data: { ds: Data[0], tenKH: tenKH, diaChi: diaChi, giamGia: giamGia2, tienTra: tienTra2, SDT: sdt, Type: kieuTT, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                        success: function (res) {
+                            if (res.success) {
+                                OnBeginCO();
+                                window.location.href = res.url;
+                            }
+
+                        }
+                    })
+
+                }
+
+            })
+
+        })
+        function load() {
+            $.ajax({
+                url: "/sanPham/BuyNow",
+                type: "POST",
+                success: function (res) {
+                    var items = res.data;
+                    var html = "";
+                    if (res.data != null) {
+                        html += "<tr>";
+                        html += "<td><img src='/images/product/" + items.hinhAnh + "' alt='' width='80'></td>"
+                        html += "<td> <h5 data-id='" + items.maSP + "' class='btnma'>" + items.tenSP + "</h5></td>"
+                        html += "<td width='70' class='btnSL' data-id='" + res.soLuong + "'>" + res.soLuong + "</td>"
+                        html += "<td> " + items.giaBan * 1000 + " VNĐ </td>"
+                        html += "</tr>";
+                        html += "<tr><th colspan='3' class='text-right'>Tổng Tiền </th><th><span id='tongTien2'>" + items.giaBan * 1000 * res.soLuong + "</span>VNĐ</th></tr>";
+                        html += "<tr><td colspan='3' align='right'> Giảm Giá </td><td><span id='giamgia1'>" + items.giamGia + "%</span></td></tr>";
+                        html += "<tr><td colspan='3' class='text-right font-size-24 font-weight-700' > Số Tiền Phải Trả</td><td class='font-size-24 font-weight-700'><span id='tienTra2'>" + items.thanhTien * 1000 + "</span>VNĐ</td></tr>";
+
+                        $('#donMua1').html(html);
+                        if (res.giamGia == '') {
+                            $('#giamgia1').html("Không có mã giảm");
+                        }
+                        else {
+                            $('#giamgia1').html(res.giamGia);
+                        }
+                    }
+                    else if (res.data == null) {
+                        $('#donMua1').html("");
+                        $('#tongTien').text("0");
+                        $('#tienTra').text("0");
+
+                    }
+                }
+                })
+            }
+
+        function reset() {
+            $('#tenKH').val('');
+            $('#diaChi').val('');
+            $('#SDT').val('');
+            $('#donMua1').html('');
+        }
+        function OnBeginCO() {
+            $('#datHang').attr("disabled", "disabled");
+            $('#load_send').html('<h2>Đang gửi....</h2>');
+        }
+    </script>
+}
+

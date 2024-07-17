@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Serilog.Sinks.ElmahIo</name>
+    </assembly>
+    <members>
+        <member name="T:Serilog.LoggerConfigurationElmahIoExtensions">
+            <summary>
+            Adds the WriteTo.ElmahIo() extension method to <see cref="T:Serilog.LoggerConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationElmahIoExtensions.ElmahIo(Serilog.Configuration.LoggerSinkConfiguration,Serilog.Sinks.ElmahIo.ElmahIoSinkOptions)">
+            <summary>
+            Adds a sink that writes log events to elmah.io. If not specified through options,
+            every level are logged to elmah.io. It is recommended to log warnings and up only.
+            </summary>
+            <param name="loggerConfiguration">The logger configuration.</param>
+            <param name="options">The options (like API key and log ID) to use when setting up the sink.</param>
+            <returns>Logger configuration, allowing configuration to continue.</returns>
+            <exception cref="T:System.ArgumentNullException">A required parameter is null.</exception>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationElmahIoExtensions.ElmahIo(Serilog.Configuration.LoggerSinkConfiguration,System.String,System.String,Serilog.Events.LogEventLevel,System.IFormatProvider)">
+            <summary>
+            Adds a sink that writes log events to elmah.io. This overload accepts logId as a string and
+            should be used from packages not supporting ElmahIoSinkOptions (like when configuring
+            through appsettings.json files or similar.
+            </summary>
+            <param name="loggerConfiguration">The logger configuration.</param>
+            <param name="apiKey">An API key from the organization containing the log.</param>
+            <param name="logId">The log ID as found on the elmah.io website.</param>
+            <param name="restrictedToMinimumLevel">The minimum log event level required in order to write an event to the sink. Set to Verbose by default.</param>
+            <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+            <returns>Logger configuration, allowing configuration to continue.</returns>
+            <exception cref="T:System.ArgumentNullException">A required parameter is null.</exception>
+        </member>
+        <member name="T:Serilog.Sinks.ElmahIo.ElmahIoSink">
+            <summary>
+            Writes log events to the elmah.io service.
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElmahIo.ElmahIoSink.#ctor(Serilog.Sinks.ElmahIo.ElmahIoSinkOptions)">
+            <summary>
+            Construct a sink that saves logs to the specified storage account.
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElmahIo.ElmahIoSink.#ctor(Serilog.Sinks.ElmahIo.ElmahIoSinkOptions,Elmah.Io.Client.IElmahioAPI)">
+            <summary>
+            Construct a sink that saves logs to the specified logger. The purpose of this
+            constructor is to re-use an existing client from ELMAH or similar.
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElmahIo.ElmahIoSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})">
+            <inheritdoc />
+        </member>
+        <member name="M:Serilog.Sinks.ElmahIo.ElmahIoSink.OnEmptyBatchAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions">
+            <summary>
+            Provides ElmahIoSink with configurable options
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.ApiKey">
+            <summary>
+            An API key able to write messages to elmah.io (enable the Messages - Write permission).
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.LogId">
+            <summary>
+            The ID of the log to store messages from Serilog.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.Application">
+            <summary>
+            An application name to put on all log messages.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.OnMessage">
+            <summary>
+            Callback executed on each log message. Additional properties can be set on the provided message.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.OnError">
+            <summary>
+            Callback executed when something goes wrong during communication with elmah.io.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.OnFilter">
+            <summary>
+            Callback used to filter one or more log message. If returning true from the provided func, the log messages will not be logged.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.FormatProvider">
+            <summary>
+             Supplies culture-specific formatting information, or null.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.BatchPostingLimit">
+            <summary>
+             The maximum number of events to post in a single batch. Defaults to: 50.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.Period">
+            <summary>
+             The time to wait between checking for event batches. Defaults to 2 seconds.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.MinimumLogEventLevel">
+            <summary>
+            The minimum log event level required in order to write an event to the sink.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.LevelSwitch">
+            <summary>
+            A switch allowing the pass-through minimum level to be changed at runtime.
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElmahIo.ElmahIoSinkOptions.#ctor(System.String,System.Guid)">
+            <summary>
+            Creates a new options instance. Period will be set to 2 seconds and
+            BatchPostingLimit to 50 unless set manually afterwards.
+            </summary>
+        </member>
+    </members>
+</doc>

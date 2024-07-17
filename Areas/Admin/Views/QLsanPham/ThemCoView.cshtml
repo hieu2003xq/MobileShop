@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "ThemCoView";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container-full">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="page-title">Thêm Sản Phẩm</h3>
+                <div class="d-inline-block align-items-center">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                            <li class="breadcrumb-item" aria-current="page">e-Commerce</li>
+                            <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <section class="content">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">About Product</h4>
+                    </div>
+                    <div class="box-body">
+                        <form>
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-group">
+                                            <label class="font-weight-700 font-size-16">Mã Sản Phẩm</label>
+                                            <input type="text" id="maSP" class="form-control" placeholder="Mã Sản Phẩm">
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-700 font-size-16">Tên Sản Phẩm</label>
+                                            <input type="text" id="tenSP" class="form-control" placeholder="Tên Sản Phẩm">
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-700 font-size-16">Mã Giảm</label>
+                                            <select class="form-control" id="maGiam" data-placeholder="Choose a Category" tabindex="1">
+                                                <option value="6">0%</option>
+                                                <option value="1">10%</option>
+                                                <option value="2">20%</option>
+                                                <option value="3">30%</option>
+                                                <option value="4">40%</option>
+                                                <option value="5">50%</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-700 font-size-16">Price</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                                <input type="text" class="form-control" id="giaBan" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <!--/row-->
+                                <div class="row">
+                                    <!--/span-->
+                                    <div class="col-md-3">
+                                        <h4 class="box-title mt-20">Upload Image</h4>
+                                        <div class="product-img text-left">
+                                            <img src="" alt="" id="reviewAnh">
+                                            <div class="btn btn-info mb-20">
+                                                <span>Upload Anonther Image</span>
+                                                <input type="file" class="upload" id="hinhAnh" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class=" btn btn-danger btnthoat" data-dismiss="modal"><i class="ti-trash"></i> Thoát </button>
+                            <button type="button" style="background-color:blue" class="btn btn-primary btnmua" id="themMoi1"><i class="ti-save-alt"></i>Thêm </button><!-- /.box-body -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+@section css{
+
+    <link href="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet" />
+
+}
+@section script{
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- <script src="~/Scripts/jquery-3.7.0.slim.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.slim.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <!--<script src="~/Scripts/jquery-3.7.0.min.js"></script> -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#hinhAnh').change(function () {
+                var hinhAnh = $('#hinhAnh').prop('files')[0].name;
+                $('#reviewAnh').attr('src', '/images/product/' + hinhAnh);
+            });
+            $("#themMoi1").on("click", function () {
+                var maSP = $('#maSP').val();
+                var tenSP = $('#tenSP').val();
+                var giaBan = $('#giaBan').val();
+                var maGiam = $('#maGiam').val();
+                var duongDan = $('#hinhAnh').val()
+                if (maSP == '' || tenSP == '' || giaBan == '' || duongDan == '' || maGiam == '') {
+                    $.toast({
+                        heading: 'Cảnh Báo  ',
+                        text: ' Chưa nhập đủ thông tin  ',
+                        position: 'top-right',
+                        loaderBg: '#ff6849',
+                        icon: 'warning',
+                        hideAfter: 1500,
+                        stack: 6
+                    });
+                } else {
+                    var hinhAnh = $('#hinhAnh').prop('files')[0].name;
+                    $.ajax({
+                        url: "/QLsanPham/ThemSP",
+                        type: "POST",
+                        data: { maSP: maSP, tenSP: tenSP, giaBan: giaBan, maGiam: maGiam, hinhAnh: hinhAnh, __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val() },
+                        success: function (res) {
+                            if (res.success) {
+                                $.toast({
+                                    heading: 'Thành Công  ',
+                                    text: ' Thêm Sản Phẩm  ',
+                                    position: 'top-right',
+                                    loaderBg: '#ff6849',
+                                    icon: 'success',
+                                    hideAfter: 50,
+                                    stack: 6,
+                                });
+                                reset();
+                            }
+                            else {
+                                $.toast({
+                                    heading: 'Cảnh Báo  ',
+                                    text: ' Sản Phẩm đã tồn tại  ',
+                                    position: 'top-right',
+                                    loaderBg: '#ff6849',
+                                    icon: 'warning',
+                                    hideAfter: 1500,
+                                    stack: 6
+                                });
+                            }
+                        }
+                    })
+                }
+
+            })
+            $('.btnthoat').on('click', function () {
+                window.location.href = "/Admin/QLsanPham/Index";
+            })
+        })
+        function reset() {
+            $('#maSP').val('');
+            $('#tenSP').val('');
+            $('#giaBan').val('');
+            $('#hinhAnh').val('');
+            $('#maGiam').val('');
+            $('#reviewAnh').attr('src', '');
+        }
+    </script>
+}
+
